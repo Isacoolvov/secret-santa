@@ -6,17 +6,7 @@ import Stack from '@mui/material/Stack';
 const Home = () => {
   return (
     <>
-<header className='navBar'>
-<nav className="menu">
-  <ul className='menu-items'>
-    <li ><a  className='menu-item' href="#">Мои Игры</a></li>
-    <li ><a  className='menu-item' href="#">Уведомления</a></li>
-    <li ><Link  className='menu-item' href="/myAccount">Мой аккаунт</Link></li>
-    <li ><a  className='menu-item' href="#">|</a></li>
-    <li ><a  className='menu-item' href="#">RU</a></li>
-  </ul>
-</nav>
-</header>
+
 
 <main className='main'>
     <img className='imgSanta' src={Santa.src} alt="SecretSanta" />
