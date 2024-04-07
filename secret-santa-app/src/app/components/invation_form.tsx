@@ -9,7 +9,7 @@ const MainButton1 = styled(MainButton)({
 });
 
 const StyledBox = styled(Box)({
-  backgroundColor: '#f0f0f0',
+  backgroundColor: '#fff',
   padding: '20px',
   borderRadius: '10px',
 });

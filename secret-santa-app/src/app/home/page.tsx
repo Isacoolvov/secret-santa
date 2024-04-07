@@ -1,4 +1,3 @@
-import '../../css/header.css'
 import Santa from '../../../public/homeSanta.svg';
 import Link from 'next/link';
 import { MainButton, SecondaryButton } from '@/helpers/uiHelpers';
