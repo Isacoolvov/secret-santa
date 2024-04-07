@@ -4,7 +4,7 @@ export default async function changeP(
   currentState: unknown,
   formData: FormData
 ) {
-try {
+
     const access = getAccessToken();
   if (!access) {
     console.error("Access token is missing");
@@ -37,15 +37,12 @@ console.log(access);
     return { data: null, error: "Failed to update login and email" };
   }
 
-  const data = await res.json();
+  const data =  await res.text();
 console.log("Response data:", data);
-console.log("Error message:", data.message);
+console.log("Error message:", data);
 
   return { data: data, error: null };
-}
-catch (error) {
-    console.log(error);
-    
-}
+
+
 
 }
