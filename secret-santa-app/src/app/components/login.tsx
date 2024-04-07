@@ -2,8 +2,10 @@
 import { useFormState } from "react-dom";
 import login from "../actions/log-in";
 import saveTokens from "@/helpers/save-tokens";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter()
   const [formstate, dispatch] = useFormState(login, {
     error: null,
     data: null,
@@ -11,6 +13,8 @@ export default function Login() {
   console.log(formstate);
   if (formstate.data != null) {
     saveTokens(formstate.data);
+    router.push('/home')
+    
   }
 
   return (
