@@ -11,7 +11,6 @@ export default function MyAccount() {
   console.log(formstate);
   if (formstate?.data != null) {
     saveTokens(formstate.data);
-    
   }
 
   return (
