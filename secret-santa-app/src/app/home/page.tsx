@@ -1,6 +1,6 @@
 import Santa from '../../../public/homeSanta.svg';
 import Link from 'next/link';
-import '../../css/header.css'
+import '../../css/home.css'
 import { MainButton, SecondaryButton } from '@/helpers/uiHelpers';
 import Stack from '@mui/material/Stack';
 const Home = () => {
