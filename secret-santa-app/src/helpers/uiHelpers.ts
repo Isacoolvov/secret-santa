@@ -15,9 +15,7 @@ export const roboto = Roboto({
 
 
 export const theme = createTheme({
-    typography: {
-        fontFamily: roboto.style.fontFamily,
-    },
+
     components: {
         MuiSwitch: {
             styleOverrides: {
