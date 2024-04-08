@@ -1,19 +1,16 @@
 "use client";
 import Link from "next/link";
 import isEntired from "@/helpers/entired";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getAccessToken } from "@/helpers/getTokens";
 
 export default function NavBar() {
-//   const pathname = usePathname();
-  const [changes, setChanges] = useState(false);
-  useEffect(() => {
-    if(getAccessToken()){
-        setChanges(true);
-    }
-   
-  }, [changes]);
+    const pathname = usePathname();
+    const [changes, setChanges] = useState(false);
+    useEffect(() => {
+      setChanges(isEntired);
+    }, [pathname]);
   return (
     <div className="navBar">
       <nav className="menu">
