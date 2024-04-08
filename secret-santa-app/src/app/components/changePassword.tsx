@@ -2,7 +2,7 @@
 import { useFormState } from "react-dom";
 import changeP from "../actions/change-password";
 // import saveTokens from "@/helpers/save-tokens";
-
+import '../../css/myAccount.css'
 export default function changePassword() {
   const [formstate, dispatch2] = useFormState(changeP, 
   null
@@ -14,14 +14,24 @@ export default function changePassword() {
     
   // }
   
-
   return (
     <div>
       <form action={dispatch2}>
-        <input type="password" name="currentPassword" placeholder="currentPassword"/>
-        <input type="password" name="newPassword" placeholder="newPassword" />
-        <input type="password" name="confirmPassword" placeholder="confirmPassword" />
-        <button type="submit">Сохранить</button>
+        <h2 className="form-h2">Пароль</h2>
+        <label>
+        Текущий пароль
+          <input type="password" name="currentPassword"/>
+        </label>
+        <label>
+        Новый пароль
+          <input type="password" name="newPassword" />
+        </label>
+        <label>  
+        Повторите пароль
+          <input type="password" name="confirmPassword"/>
+        </label>
+        <br />
+        <button className="save-btn" type="submit">Сохранить</button>
         
       </form>
     </div>

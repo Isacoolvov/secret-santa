@@ -2,7 +2,7 @@
 import { useFormState } from "react-dom";
 import changeLogin from "../actions/my-account";
 import saveTokens from "@/helpers/save-tokens";
-
+import '../../css/myAccount.css'
 export default function MyAccount() {
   const [formstate, dispatch] = useFormState(changeLogin, {
     error: null,
@@ -14,11 +14,20 @@ export default function MyAccount() {
   }
 
   return (
-    <div>
-      <form action={dispatch}>
-        <input type="text" name="newLogin" placeholder="login"/>
-        <input type="email" name="newEmail" placeholder="email" />
-        <button type="submit">Сохранить</button>
+    <div className="container">
+        
+      <form className="form" action={dispatch}>
+        <label >
+          Ваше Имя
+        <input  type="text" name="newLogin" placeholder="   Имя Фамилия"/>
+        </label>
+        <br />
+        <label >
+          Ваш Email
+        <input type="email" name="newEmail" placeholder="   example@gmail.com" />
+        </label>     
+        <br />  
+        <button className="save-btn" type="submit">Сохранить</button>
       </form>
     </div>
   );
