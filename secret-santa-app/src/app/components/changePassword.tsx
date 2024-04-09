@@ -1,22 +1,14 @@
 "use client";
 import { useFormState } from "react-dom";
 import changeP from "../actions/change-password";
-// import saveTokens from "@/helpers/save-tokens";
 import '../../css/myAccount.css'
 export default function changePassword() {
-  const [formstate, dispatch2] = useFormState(changeP, 
-  null
-  );
-   console.log(formstate);
-  // if (formstate?.data != null) {
-  //   // saveTokens(formstate.data);
-  //   console.log();
-    
-  // }
+  const [formstate, dispatch] = useFormState(changeP,  null);
+  console.log(formstate);
   
   return (
     <div>
-      <form action={dispatch2}>
+      <form action={dispatch}>
         <h2 className="form-h2">Пароль</h2>
         <label>
         Текущий пароль
@@ -32,7 +24,9 @@ export default function changePassword() {
         </label>
         <br />
         <button className="save-btn" type="submit">Сохранить</button>
-        
+        <p className="result"> {formstate?.data===''?<>{formstate.error} Текущий пароль не совпадает </>:<>{formstate?.data}</>}</p>
+
+    
       </form>
     </div>
   );

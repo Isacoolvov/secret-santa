@@ -1,11 +1,8 @@
-import MyGames from "@/app/components/myGames";
-const MyGame = () => {
+import MyGames  from "@/app/components/myGames";
+const Games = () => {
   return (
-    <><MyGames/> 
-     <div></div>
-    </>
-   
+    <div><MyGames /></div>
   )
 }
-// dont work yet
-export default MyGame
+
+export default Games

@@ -17,7 +17,6 @@ console.log(access);
   const maxPrice = formData.get("maxPrice");
   const uniqueIdentifier = formData.get("uniqueIdentifier");
 
-  console.log("priceLimitChecked", priceLimitChecked);
   
   const res = await fetch(
     "http://51.107.14.25:8080/games/create-game",
@@ -37,14 +36,15 @@ console.log(access);
   );
 
   if (!res.ok) {
-    console.error("Failed to update login and email");
-    return { data: null, error: "Failed to update login and email" };
+    console.error("Failed to create");
+    return { data: null, error: "Failed to create" };
   }
 
   const data = await res.json();
-console.log("Response data:", data);
-
+  console.log("Response data:", data);
   return { data: data, error: null };
+  
+
 }
 catch (error) {
     console.log(error);

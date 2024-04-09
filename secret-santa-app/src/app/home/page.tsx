@@ -6,8 +6,6 @@ import Stack from '@mui/material/Stack';
 const Home = () => {
   return (
     <>
-
-
 <main className='main'>
     <img className='imgSanta' src={Santa.src} alt="SecretSanta" />
     <section className='content'>

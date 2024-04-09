@@ -4,18 +4,11 @@ import changeLogin from "../actions/my-account";
 import saveTokens from "@/helpers/save-tokens";
 import '../../css/myAccount.css'
 export default function MyAccount() {
-  const [formstate, dispatch] = useFormState(changeLogin, {
-    error: null,
-    data: null,
-  });
+  const [formstate, dispatch] = useFormState(changeLogin,  null );
   console.log(formstate);
-  if (formstate?.data != null) {
-    saveTokens(formstate.data);
-  }
 
   return (
     <div className="container">
-        
       <form className="form" action={dispatch}>
         <label >
           Ваше Имя
@@ -27,7 +20,9 @@ export default function MyAccount() {
         <input type="email" name="newEmail" placeholder="   example@gmail.com" />
         </label>     
         <br />  
-        <button className="save-btn" type="submit">Сохранить</button>
+        <button className="save-btn" type="submit">Сохранить</button><br />
+        {/* {formstate?<></>:<></>} */}
+        <p className="result">{formstate?.data}{formstate?.error}</p>
       </form>
     </div>
   );

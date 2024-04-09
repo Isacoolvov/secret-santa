@@ -4,6 +4,7 @@ export default async function signup(
   currentState: unknown,
   formData: FormData
 ) {
+  try {
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -31,4 +32,8 @@ export default async function signup(
   }
   const data = await res.json();
   return { data: data, error: null };
+} catch (error) {
+    console.log('error' );
+    
+}
 }
