@@ -11,7 +11,7 @@ export default function Login() {
     data: null,
   });
   console.log(formstate);
-  if (formstate.data != null) {
+  if (formstate?.data != null) {
     saveTokens(formstate.data);
     router.push('/home')
     
@@ -24,6 +24,7 @@ export default function Login() {
         <input type="password" name="password" />
         <button type="submit">Войти</button>
       </form>
+      {formstate?.data === undefined?<>не правильный логин или пароль</>:<></>}
     </div>
   );
 }

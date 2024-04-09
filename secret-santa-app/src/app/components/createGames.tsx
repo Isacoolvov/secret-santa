@@ -12,9 +12,7 @@ export default function createGames() {
   const [priceLimitChecked ,setPriceLimitChecked] = useState(false)
 
   console.log(formstate);
-  if (formstate?.data != null) {
-    saveTokens(formstate.data);
-  }
+  
 
   return (
     <div className="container">
@@ -22,7 +20,7 @@ export default function createGames() {
       <form className="form" action={createdispatch}>
         <label >
           Название игры
-        <input  type="text" name="name" placeholder=""/>
+        <input  type="text" name="name" placeholder="Название игры"/>
         </label>
         <br />
         <label >

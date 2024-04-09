@@ -64,3 +64,13 @@ font-size: 13px;
 font-weight: 500;
 border: none;
 }
+.result{
+    margin-left: 6rem;
+    margin-bottom: 1.5rem;
+    color: rgb(51, 51, 51);
+font-family: DM Sans;
+font-size: 16px;
+font-weight: 500;
+line-height: 34px;
+letter-spacing: 0%;
+}

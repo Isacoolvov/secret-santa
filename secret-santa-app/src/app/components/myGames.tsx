@@ -39,15 +39,19 @@ function FetchDataComponent() {
   return (
     <div>
       <h1>Мои игры </h1>
-      <ul>
-        {data.map(item => (
-          <li key={item.id}>
-            ID: {item.id}, Name: {item.name}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+      
+      {data.length === 0 ? <p>У вас нет игр</p> : (
+  <ul>
+    {data.map((item , index) => (
+      <li key={index}>
+        ID: {item.id}, Name: {item.name}
+      </li>
+    ))}
+  </ul>
+       
+  )}
+      </div>
+  )
 }
 
 export default FetchDataComponent;
