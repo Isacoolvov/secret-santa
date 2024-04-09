@@ -9,7 +9,7 @@ export default function SingUp() {
     data: null,
   });
   console.log(formstate);
-  if (formstate.data != null) {
+  if (formstate?.data != null) {
     saveTokens(formstate.data);
   }
 
