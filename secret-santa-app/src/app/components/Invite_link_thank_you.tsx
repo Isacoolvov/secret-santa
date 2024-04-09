@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
+import Image from 'next/image';
 
 
 
@@ -38,7 +39,7 @@ const InviteThankYouComponent = () => {
 
 
           <Typography align="center" variant="h5" gutterBottom>
-            <img src="/img/santa_thumb.PNG" alt="santa_thumb"/>
+          <Image src="/img/santa_thumb.PNG" alt="santa_thumb" width={300} height={200} />
           </Typography>
 
 
