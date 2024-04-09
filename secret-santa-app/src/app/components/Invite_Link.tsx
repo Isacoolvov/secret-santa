@@ -36,7 +36,7 @@ const InviteLinkComponent = () => {
 
   useMemo(() => {
     const game_id = params.game_id || '';
-    setUrl(`http://my.supertest.com/linktogame/?invite_id=${game_id}`);
+    setUrl(`http://51.107.14.25:8080/invitations_accept/${game_id}`);
   }, [params.game_id]);
 
 

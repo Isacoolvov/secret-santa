@@ -1,21 +1,17 @@
-
 'use server';
 
-
 export async function navigateToInviteSend(participantsData: FormData) {
-
-  console.log(participantsData);
-
-  
   try {
-    const response = await fetch('http://51.107.14.25:8080/invitations/send', {
+    const response = await fetch(`http://51.107.14.25:8080/invitations/send?gameId=${participantsData.get('gameId')}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${participantsData.get('access')}`,
       },
       body: JSON.stringify(participantsData),
     });
-
+    
+    console.log(response);
     if (!response.ok) {
       throw new Error('Ошибка при отправке данных на сервер');
     }
@@ -24,6 +20,4 @@ export async function navigateToInviteSend(participantsData: FormData) {
   } catch (error) {
     console.error('Ошибка:', error.message);
   }
-
 }
-

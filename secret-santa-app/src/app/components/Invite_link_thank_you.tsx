@@ -36,6 +36,12 @@ const InviteThankYouComponent = () => {
             Приглашения отправлены
           </Typography>
 
+
+          <Typography align="center" variant="h5" gutterBottom>
+            <img src="/img/santa_thumb.PNG" alt="santa_thumb"/>
+          </Typography>
+
+
           <Typography align="center" variant="body2" gutterBottom>
             Вам придет уведомление, как только участники примут Ваше приглашение
           </Typography>
