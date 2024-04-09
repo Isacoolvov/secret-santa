@@ -34,12 +34,10 @@ export default function createGames() {
         <input type="checkbox" name="priceLimitChecked" checked={priceLimitChecked}
           onChange={(e) => setPriceLimitChecked(e.target.checked)} />
         </label>  
-        {/* {priceLimitChecked===true?<><label >
+        {priceLimitChecked===true?<><label >
         Максимальная стоимость подарка
-        <input type="number" name="maxPrice"   placeholder="Максимальная стоимость подарка" />
-        </label>  </>:<></>} */}
-        <input type="number" name="maxPrice"   placeholder="Максимальная стоимость подарка" />
-
+        <input type="number" name="maxPrice"   placeholder="Укажите максимальную стоимость подарка" />
+        </label>  </>:<></>}
         <br />  
         <button className="save-btn" type="submit">Создать игру</button>
       </form>
