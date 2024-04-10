@@ -1,23 +1,37 @@
-'use server';
-
-export async function navigateToAcceptSend(participantsData: FormData) {
+export async function navigateToAcceptSend(prevState: any, participantsData: FormData) {
+  let successMessage = '';
+  let errorMessage = '';
+  
   try {
-    const response = await fetch(`http://51.107.14.25:8080/invitations/accept?gameId=${participantsData.get('gameId')}`, {
+    const response = await fetch(`http://51.107.14.25:8080/invitations/accept/${participantsData.get('invite_id')}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'accept': '*/*',
         'Authorization': `Bearer ${participantsData.get('access')}`,
       },
-      body: JSON.stringify(participantsData),
+      body: JSON.stringify({})
     });
-    
-    console.log(response);
+
+    console.log('accept');
+
     if (!response.ok) {
-      throw new Error('Ошибка при отправке данных на сервер');
+      const errorData = await response.json();
+      errorMessage = errorData.message || 'Ошибка при отправке данных на сервер';
+      throw new Error(errorMessage);
     }
 
-    console.log('Данные успешно отправлены на сервер');
+    const responseBody = await response.json();
+
+    if (response.status === 200) {
+      successMessage = 'Данные успешно отправлены на сервер';
+    } else if (response.status === 202) {
+      successMessage = 'Вы уже являетесь участником игры.';
+      console.log('Message:', responseBody.message);
+    }
   } catch (error) {
-    console.error('Ошибка:');
+    errorMessage = error.message;
+    console.error('Ошибка:', errorMessage);
   }
+
+  return { successMessage, errorMessage };
 }
