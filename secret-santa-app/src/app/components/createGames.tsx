@@ -3,16 +3,12 @@ import { useFormState } from "react-dom";
 import createGame from "../actions/create-games";
 import '../../css/myAccount.css'
 import { useState } from "react";
-import saveGameId from "@/helpers/saveGameId";
+import localsaveGameId from "@/helpers/saveGameId";
 import { useRouter } from "next/navigation";
-type Props ={   
-        id: string,
-        name: string,
-        maxPrice: number,
-        participantCount: number,
-        creatorId: string,
-        role?: string     
-}
+import { Box, Grid, Typography, styled } from "@mui/material";
+import { MainButton, SwitchMain } from "@/helpers/uiHelpers";
+import { MainButton1, StyledBox } from "@/helpers/styles";
+
 export default function createGames() {
   const [formstate, createdispatch] = useFormState(createGame, {
     error: null,
@@ -20,36 +16,62 @@ export default function createGames() {
   });
   const router =useRouter()
   const [priceLimitChecked ,setPriceLimitChecked] = useState(false)
-const data:Props = formstate?.data
   console.log(formstate);
   if (formstate?.data != null) {
-    saveGameId(formstate.data.id);
+    localsaveGameId(formstate.data.id);
     console.log(formstate.data.id);
     router.push(`/gameCreated/${formstate.data.id}`)
   }
-
   return (
-    <div className="container">
+    <div>
         
+
+    <Grid container justifyContent="center" alignItems="center">
+
+
+ <StyledBox style={{width: '550px' , height:'600px'}}> 
+ <Typography align="center" variant="h5" gutterBottom style={{marginTop:'50px' ,marginBottom:'40px'}} >
+<b> Создать игру</b>
+          </Typography>
       <form className="form" action={createdispatch}>
+
         <label >
           Название игры
         <input  type="text" name="name" placeholder="Название игры"/>
         </label>
         <br />
         <label >
-        Максимальная стоимость подарка
-        <input type="checkbox" name="priceLimitChecked" checked={priceLimitChecked}
-          onChange={(e) => setPriceLimitChecked(e.target.checked)} />
-        </label>  
-        {priceLimitChecked===true?<><label >
-        Максимальная стоимость подарка
+        Идентификатор
+        <input  type="text" name="name" placeholder="random"/>
+        </label>
+        <label >
+        <span>Максимальная стоимость подарка</span>
+         <SwitchMain 
+        defaultChecked={priceLimitChecked} 
+        onChange={(e) => setPriceLimitChecked(e.target.checked)} 
+      />
+              </label>  
+              <p style={{fontSize:'0.63rem' , marginLeft:'40px' , }}>При включенной опции участникам будет показано ограничение, которому они должны будут следовать</p>
+              <br />
+       {priceLimitChecked===true?<>
         <input type="number" name="maxPrice"   placeholder="Укажите максимальную стоимость подарка" />
-        </label>  </>:<></>}
-        <br />  
+         </>:<></>}
+        <br/>  
+        <MainButton1 
+            variant="contained"
+           type="submit"
+            style={{marginLeft: '190px' ,width:'180px' ,height:'50px' }}
+          >
+        Создать игру
 
-        <button className="save-btn" type="submit">Создать игру</button>
+          </MainButton1>
               </form>
+              </StyledBox>
+
+
+
+</Grid>
+
     </div>
   );
 }

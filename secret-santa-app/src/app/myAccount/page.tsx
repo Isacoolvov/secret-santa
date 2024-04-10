@@ -9,7 +9,6 @@ export default function Page() {
         <h2 className="form-h2">Личные данные</h2>
         <MyAccount />
         <ChangePassword />
-        {/* <DeleteAccount/> */}
       </div>
     </main>
   );

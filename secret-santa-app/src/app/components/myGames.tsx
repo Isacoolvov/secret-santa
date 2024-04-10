@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
 import { Grid } from '@mui/material';
+import { StyledBox } from '@/helpers/styles';
 
 type Repo = {
   name: string;
@@ -38,6 +39,7 @@ function FetchDataComponent() {
   return (
     <div>
       <Grid container justifyContent="center" alignItems="center">
+      <StyledBox style={{width: '500px' , height:'550px'}}>
       {loading?<>Loading...</>:<>
       
       <h1>Мои игры </h1>
@@ -53,6 +55,8 @@ function FetchDataComponent() {
        
   )}
   </>}
+  </StyledBox>
+
   </Grid>
 
       </div>

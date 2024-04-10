@@ -1,7 +1,26 @@
-import { redirect } from "next/navigation";
 
-export default function Home() {
+import '../css/home.css'
+import { MainButton, SecondaryButton } from '@/helpers/uiHelpers';
+import Stack from '@mui/material/Stack';
+import Image from 'next/image';
+const Home = () => {
   return (
-     redirect("/home")
-    );
+    <>
+<main className='main'>
+<Image src="/img/homeSanta.svg" alt="santa_thum" width={600} height={600} priority={true}/>
+    <section className='content'>
+  <h1 className='content-h1'>Тайный Санта</h1>
+  <p className='content-p'>Организуй тайный обмен подарками между друзьями или коллегами</p>
+  <Stack  direction="row">
+<MainButton variant="contained">Создать игру</MainButton>
+            <SecondaryButton variant="contained">Жеребьевка</SecondaryButton>
+            </Stack>
+</section>
+
+</main>
+
+    </>
+  )
 }
+
+export default Home

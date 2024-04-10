@@ -13,7 +13,7 @@ export default function Login() {
   console.log(formstate);
   if (formstate?.data != null) {
     saveTokens(formstate.data);
-    router.push('/home')
+    router.push('/')
     
   }
 
