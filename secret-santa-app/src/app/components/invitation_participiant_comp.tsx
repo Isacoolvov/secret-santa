@@ -99,6 +99,7 @@ const InviteParticipants = () => {
           <MainButton1 variant="contained" onClick={handleAddParticipant}>
             Добавить еще участника
           </MainButton1>
+          
           <MainButton1 variant="contained" color="primary" type="submit">
             Пригласить
           </MainButton1>
@@ -110,4 +111,3 @@ const InviteParticipants = () => {
 };
 
 export default InviteParticipants;
-
