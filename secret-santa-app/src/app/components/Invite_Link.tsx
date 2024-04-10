@@ -36,13 +36,14 @@ const InviteLinkComponent = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setDataFetch(data)
-        setLoading(false)
+        console.log(data);
+        setDataFetch(data);
+        setLoading(false);
       })
-  }, [])
+  }, []);
 
-  if (isLoading) return <p>Loading...</p>
-  if (!dataFetch) return <p>No  data</p>
+  if (isLoading)  <p>Loading...</p>
+  if (!dataFetch)  <p>No  data</p>
 
 
   const handleCopyToClipboard = () => {
