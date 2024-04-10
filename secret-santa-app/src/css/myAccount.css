@@ -1,10 +1,12 @@
 .forms{
+
    padding-top: 3rem;
-    width: 500px;     
+    width: 550px;     
 height: 700px;    
 background: #f8f7f7; 
 margin: 0 auto; 
 border-radius: 1rem;
+margin-top: -130px;
 }
 /* myAccount.css */
 .page-container {
