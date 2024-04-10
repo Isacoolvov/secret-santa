@@ -45,5 +45,5 @@ function DeleteAccount() {
     </>
   );
 }
-
+//soon
 export default DeleteAccount;

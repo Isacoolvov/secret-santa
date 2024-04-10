@@ -1,8 +1,8 @@
 export function getGameId(): string | null {
-    return sessionStorage.getItem("gameId");
+    return sessionStorage.getItem("id");
   }
   
-//   export function getRefreshToken(): string | null {
-//     return localStorage.getItem("refreshToken");
-//   }
+  export function localGameId(): string | null {
+    return localStorage.getItem("id");
+  }
   
