@@ -25,7 +25,7 @@ const data:Props = formstate?.data
   if (formstate?.data != null) {
     saveGameId(formstate.data.id);
     console.log(formstate.data.id);
-    router.push('/gameCreated')
+    router.push(`/gameCreated/${formstate.data.id}`)
   }
 
   return (

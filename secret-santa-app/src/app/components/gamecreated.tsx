@@ -6,12 +6,19 @@ import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { getGameId } from '@/helpers/getGameId';
+import { useMemo, useState } from 'react';
+import { useParams } from 'next/navigation';
 
 
 const gamecreated = () => {
-
-
+    const [ID, setID] = useState('');
+    const params = useParams()
+    useMemo(() => {
+      const game_id = params.game_id || '';
+      setID(`${game_id}`);
+    }, [params.game_id]);
+    const gameId =getGameId();
   const StyledBox = styled(Box)({
     backgroundColor: '#fff',
     padding: '20px',
@@ -51,7 +58,7 @@ const gamecreated = () => {
 
         <Stack m={2} spacing={3}>
 
-            <Link href='/invation/' passHref>
+            <Link href={`/invitation/${ID}`} passHref>
           <MainButton1
             variant="contained"
            type="submit"
