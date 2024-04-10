@@ -7,11 +7,19 @@ import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
 import { useParams } from 'next/navigation';
-import { navigateToAcceptSend } from '@/app/actions/navigate_to_accept_send';
+import { navigateToAcceptSend1 } from '@/app/actions/navigate_to_accept_send';
 
+import { getAccessToken } from "@/helpers/getTokens";
 
+import { useFormState } from 'react-dom'
+
+const initialState = {
+  successMessage: '',
+  errorMessage: ''
+}
 
 const InviteAcceptComponent1 = () => {
+  const [state, formAction] = useFormState(navigateToAcceptSend1, initialState);
 
 
   const StyledBox = styled(Box)({
@@ -32,6 +40,7 @@ const InviteAcceptComponent1 = () => {
     setID(`${game_id}`);
   }, [params.game_id]);
 
+  const access = getAccessToken();
 
 
   return (
@@ -42,13 +51,15 @@ const InviteAcceptComponent1 = () => {
 
 
       <StyledBox>
+      {state?.successMessage}
+      {state?.errorMessage}
 
-      <form action={navigateToAcceptSend}>
+      <form action={formAction}>
 
 
         <Grid item xs={12}>
           <Typography align="center" variant="h5" gutterBottom>
-            Подтвердить приглашение
+            Подтвердить приглашение1
           </Typography>
 
 
@@ -56,14 +67,15 @@ const InviteAcceptComponent1 = () => {
 
         <Stack m={2} spacing={3}>
 
-        <input type="hidden" name="gameId" value={ID} />
-         
+        <input type="hidden" name="invite_id" value={ID} />
+        <input type="hidden" name="access" value={access} />
+
           <MainButton1
             variant="contained"
             style={{ marginLeft: '10px' }}
             type="submit"
           >
-            Подтвердить приглашение
+            Подтвердить 
 
           </MainButton1>
 

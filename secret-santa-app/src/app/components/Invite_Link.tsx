@@ -65,12 +65,16 @@ const InviteLinkComponent = () => {
   });
 
 
-
+  type DataFetchType = {
+    link: string;
+  }
 
   useMemo(() => {
-
-    setUrl(`http://51.107.14.25:8080/invitations_accept/${dataFetch}`);
-  }, [params.game_id]);
+    if (dataFetch && dataFetch.link) {
+      let modifiedUrl = dataFetch.link.replace(/\/invitations\/accept\//, "/invitations_accept/");
+      setUrl(modifiedUrl);
+    }
+  }, [params.game_id, dataFetch?.link]);
 
 
   return (

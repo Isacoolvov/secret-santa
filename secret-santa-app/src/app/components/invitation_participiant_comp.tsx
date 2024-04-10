@@ -8,9 +8,19 @@ import { Box, Grid, TextField, Button, Typography } from '@mui/material';
 import { MainButton } from "@/helpers/uiHelpers";
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
-import { navigateToInviteSend } from '@/app/actions/navigate_to_invite_send_action';
+import { navigateToInviteSend1 } from '@/app/actions/navigate_to_invite_send_action';
 import { useParams } from 'next/navigation'
 import { useMemo } from 'react';
+
+import { useFormState } from 'react-dom'
+//import Alert from '@mui/material/Alert';
+
+
+const initialState = {
+  successMessage: 'qq1',
+  errorMessage: 'qqq2'
+}
+
 
 const MainButton1 = styled(MainButton)({
   margin: '10px',
@@ -48,11 +58,18 @@ const InviteParticipants = () => {
 
   const access = getAccessToken();
 
-  
+  const [state, formAction1] = useFormState(navigateToInviteSend1, initialState);
+
   return (
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
-        <form action={navigateToInviteSend}>
+      
+          {state?.successMessage}
+
+        {state?.errorMessage}
+
+
+        <form action={formAction1}>
 
           <Grid item xs={12}>
             <Typography align="center" variant="h5" gutterBottom>
@@ -97,11 +114,11 @@ const InviteParticipants = () => {
           <input type="hidden" name="gameId" value={ID} />
           <input type="hidden" name="access" value={access} />
 
-          
+
           <MainButton1 variant="contained" onClick={handleAddParticipant}>
             Добавить еще участника
           </MainButton1>
-          
+
           <MainButton1 variant="contained" color="primary" type="submit">
             Пригласить
           </MainButton1>
