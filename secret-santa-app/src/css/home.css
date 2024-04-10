@@ -1,0 +1,25 @@
+.main{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.imgSanta{
+    margin-top: 4rem;
+    margin-right:12rem;
+    width: 35rem;
+height: 35rem;
+}
+.content{
+  
+    width: 25rem;
+    margin-top: 8rem;
+}
+.content-h1{
+    color: rgb(51, 51, 51);
+    font-family: DM Sans;
+    font-size: 2.99rem;
+}
+.content-p{
+    color: rgb(51, 51, 51);
+font-family: DM Sans;
+font-size: 1.53rem;
+}

@@ -1,8 +1,9 @@
-interface data {
-  accessTokens: "string";
-  refreshTokens: "string";
+interface Tokens {
+  accessToken: string;
+  refreshToken: string;
 }
-export default function saveTokens(data: data) {
-  sessionStorage.setItem("accessToken", data.refreshTokens);
-  localStorage.setItem("refreshToken", data.refreshTokens);
+
+export default function saveTokens(data: Tokens) {
+  sessionStorage.setItem("accessToken", data.accessToken);
+  localStorage.setItem("refreshToken", data.refreshToken);
 }

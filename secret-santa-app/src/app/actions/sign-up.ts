@@ -33,5 +33,6 @@ export default async function signup(
     console.log(await res.text());
   }
   const data = await res.json();
+  
   return { data: data, error: null };
 }
