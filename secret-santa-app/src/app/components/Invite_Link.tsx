@@ -1,18 +1,49 @@
 'use client'
 
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
-import { useParams } from 'next/navigation'
+import { useParams } from 'next/navigation';
+import { getAccessToken } from "@/helpers/getTokens";
+
 
 
 
 const InviteLinkComponent = () => {
+
+  const params = useParams();
+  const game_id = params.game_id || '';
+
   const [url, setUrl] = useState('');
   const [copied, setCopied] = useState(false);
+
+  const [dataFetch, setDataFetch] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const access = getAccessToken();
+
+
+  const fetchUrl = `http://51.107.14.25:8080/invitations/generate-link?gameId=${game_id}`;
+  useEffect(() => {
+    fetch(fetchUrl, {
+      method: 'GET',
+      headers: {
+        'accept': '*/*',
+        'Authorization': `Bearer ${access}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setDataFetch(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!dataFetch) return <p>No  data</p>
+
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(url);
@@ -31,12 +62,13 @@ const InviteLinkComponent = () => {
   const MainButton1 = styled(MainButton)({
     margin: '10px',
   });
-  const params = useParams()
+
+
 
 
   useMemo(() => {
-    const game_id = params.game_id || '';
-    setUrl(`http://51.107.14.25:8080/invitations_accept/${game_id}`);
+
+    setUrl(`http://51.107.14.25:8080/invitations_accept/${dataFetch}`);
   }, [params.game_id]);
 
 

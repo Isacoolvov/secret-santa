@@ -1,8 +1,8 @@
 'use server';
 
-export async function navigateToInviteSend(participantsData: FormData) {
+export async function navigateToAcceptSend(participantsData: FormData) {
   try {
-    const response = await fetch(`http://51.107.14.25:8080/invitations/send?gameId=${participantsData.get('gameId')}`, {
+    const response = await fetch(`http://51.107.14.25:8080/invitations/accept?gameId=${participantsData.get('gameId')}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
