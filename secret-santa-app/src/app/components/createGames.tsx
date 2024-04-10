@@ -1,12 +1,10 @@
 "use client";
 import { useFormState } from "react-dom";
 import createGame from "../actions/create-games";
-import Created from "../created/page";
-import getGameId from "@/helpers/saveGameId";
 import '../../css/myAccount.css'
 import { useState } from "react";
 import saveGameId from "@/helpers/saveGameId";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 type Props ={   
         id: string,
         name: string,
@@ -20,15 +18,14 @@ export default function createGames() {
     error: null,
     data: null,
   });
+  const router =useRouter()
   const [priceLimitChecked ,setPriceLimitChecked] = useState(false)
 const data:Props = formstate?.data
   console.log(formstate);
   if (formstate?.data != null) {
     saveGameId(formstate.data.id);
     console.log(formstate.data.id);
-    
-    // router.push('/created')
-    
+    router.push('/gameCreated')
   }
 
   return (
@@ -40,10 +37,6 @@ const data:Props = formstate?.data
         <input  type="text" name="name" placeholder="Название игры"/>
         </label>
         <br />
-        <label >
-           uniqueIdentifier
-        <input  type="text" name="uniqueIdentifier" placeholder="uniqueIdentifier"/>
-        </label><br />
         <label >
         Максимальная стоимость подарка
         <input type="checkbox" name="priceLimitChecked" checked={priceLimitChecked}

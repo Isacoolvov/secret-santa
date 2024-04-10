@@ -1,4 +1,11 @@
 "use client";
+<<<<<<< HEAD
+=======
+
+import { getAccessToken } from "@/helpers/getTokens";
+const access = getAccessToken();
+
+>>>>>>> e2050a8afb42b4f31b8d1d10b2e1abbe6b9c5a6f
 import React, { useState } from 'react';
 import { Box, Grid, TextField, Button, Typography } from '@mui/material';
 import { MainButton } from "@/helpers/uiHelpers";
@@ -40,57 +47,64 @@ const InviteParticipants = () => {
     const game_id = params.game_id || '';
     setID(`${game_id}`);
   }, [params.game_id]);
-  
-  
+
+
 
   return (
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
-      <form action={navigateToInviteSend}>
+        <form action={navigateToInviteSend}>
 
-        <Grid item xs={12}>
-          <Typography align="center" variant="h5" gutterBottom>
-            Добавить участников
-          </Typography>
-        </Grid>
-        <Stack m={2} spacing={3}>
+          <Grid item xs={12}>
+            <Typography align="center" variant="h5" gutterBottom>
+              Добавить участников
+            </Typography>
+          </Grid>
+          <Stack m={2} spacing={3}>
 
 
-        {participants.map((participant, index) => (
-         <>
-            Участник №{index+1}
+            {participants.map((participant, index) => (
+              <React.Fragment key={index}>
 
-              <TextField
-                label="Имя"
-                variant="outlined"
-                fullWidth
-                name="name"
-                value={participant.name}
-                onChange={(e) => handleInputChange(index, e)}
-              />
-           
-              <TextField
-                label="E-mail"
-                variant="outlined"
-                fullWidth
-                name="email"
-                value={participant.email}
-                onChange={(e) => handleInputChange(index, e)}
-              />
+                Участник №{index + 1}
+
+                <TextField
+                  key={`name-${index}`}
+
+                  label="Имя"
+                  variant="outlined"
+                  fullWidth
+                  name="name"
+                  value={participant.name}
+                  onChange={(e) => handleInputChange(index, e)}
+                />
+
+                <TextField
+                  key={`email-${index}`}
+
+                  label="E-mail"
+                  variant="outlined"
+                  fullWidth
+                  name="email"
+                  value={participant.email}
+                  onChange={(e) => handleInputChange(index, e)}
+                />
+
+              </React.Fragment>
+            ))}
+
+
+          </Stack>
+          <input type="hidden" name="gameId" value={ID} />
+          <input type="hidden" name="access" value={access} />
+
           
-          </>
-        ))}
-        
-
-        </Stack>
-        <input type="hidden" name="gameId" value={ID} />
-
-        <MainButton1 variant="contained" onClick={handleAddParticipant}>
-          Добавить еще участника
-        </MainButton1>
-        <MainButton1 variant="contained" color="primary" type="submit">
-          Пригласить
-        </MainButton1>
+          <MainButton1 variant="contained" onClick={handleAddParticipant}>
+            Добавить еще участника
+          </MainButton1>
+          <MainButton1 variant="contained" color="primary" type="submit">
+            Пригласить
+          </MainButton1>
 
         </form>
       </StyledBox>

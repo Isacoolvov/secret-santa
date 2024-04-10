@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
+import { Grid } from '@mui/material';
 
 type Repo = {
   name: string;
@@ -33,13 +34,14 @@ function FetchDataComponent() {
       setLoading(false); 
     }
   }
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
   return (
     <div>
-      <h1>Мои игры </h1>
+      <Grid container justifyContent="center" alignItems="center">
+      {loading?<>Loading...</>:<>
       
+      <h1>Мои игры </h1>
+      <br />
       {data.length === 0 ? <p>У вас нет игр</p> : (
   <ul>
     {data.map((item , index) => (
@@ -50,6 +52,9 @@ function FetchDataComponent() {
   </ul>
        
   )}
+  </>}
+  </Grid>
+
       </div>
   )
 }

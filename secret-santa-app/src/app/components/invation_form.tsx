@@ -45,7 +45,7 @@ export default function InvitationForm() {
           <form action={navigateToCard}>
             <MainButton1 variant="contained" type="submit">Создать свою карточку участников</MainButton1>
             <input type="hidden" name="id" value={ID} />
-            <button>Submit URL</button>
+            
           </form>
         </Grid>
         <Grid item xs={12}>
@@ -59,7 +59,6 @@ export default function InvitationForm() {
           <form action={navigateToInviteParticipiant}>
             <MainButton1 variant="contained" type="submit">Пригласить по ссылке</MainButton1>
             <input type="hidden" name="id" value={ID} />
-            <button>Submit URL</button>
 
           </form>
         </Grid>

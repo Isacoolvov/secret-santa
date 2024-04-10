@@ -1,4 +1,5 @@
 import { getAccessToken } from "@/helpers/getTokens";
+import { redirect } from "next/navigation";
 
 export default async function createGamee(
   currentState: unknown,
@@ -15,7 +16,6 @@ console.log(access);
   const name = formData.get("name");
   const priceLimitChecked = formData.get("priceLimitChecked") === "on" ? true : false
   const maxPrice = formData.get("maxPrice");
-  const uniqueIdentifier = formData.get("uniqueIdentifier");
 
   
   const res = await fetch(
@@ -30,7 +30,6 @@ console.log(access);
         name: name,
         priceLimitChecked: priceLimitChecked,
         maxPrice:maxPrice,
-        uniqueIdentifier:uniqueIdentifier,
       }),
     }
   );
@@ -42,7 +41,7 @@ console.log(access);
 
   const data = await res.json();
   console.log("Response data:", data);
-  return { data: data, error: null };
+  return { data: data, error: null ,};
   
 
 }
@@ -50,6 +49,5 @@ catch (error) {
     console.log(error);
     
 }
-  
 
 }
