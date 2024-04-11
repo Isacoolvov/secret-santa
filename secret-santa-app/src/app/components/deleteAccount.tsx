@@ -43,14 +43,11 @@ function DeleteAccount() {
         variant="contained"
         disabled={loading}
         onClick={handleDeleteAccount}
-        style={{ marginLeft: '180px' ,backgroundColor:'red' ,marginTop: '60px',
+        style={{ marginLeft: '180px' ,backgroundColor:'red' ,marginTop: '40px'
         }}
       >
         {loading ? 'Удаление...' : 'Удалить аккаунт'}
       </MainButton>
-
-
-
 
     </>
   );
