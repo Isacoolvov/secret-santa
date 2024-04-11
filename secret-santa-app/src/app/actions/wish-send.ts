@@ -1,19 +1,21 @@
+import { getAccessToken } from "@/helpers/getTokens";
 export default async function sendWishes(values: []) {
-  const gameId = "a0dae013-f083-4851-a8f6-505881cc1bc4";
   console.log(values);
   const res = await fetch(
-    `http://51.107.14.25:8080/wishlist/${gameId}/create-wishlist`,
+    `http://51.107.14.25:8080/wishlist/${localStorage.getItem(
+      "game_id"
+    )}/create-wishlist`,
     {
       method: "POST",
       headers: {
+        accept: "*/*",
         "Content-Type": "application/json",
-        //'API-Key': process.env.DATA_API_KEY!,
+        Authorization: `Bearer ${getAccessToken()}`,
       },
-      body: JSON.stringify({
-        values,
-      }),
+      body: JSON.stringify({ values }),
     }
   );
+  console.log(`Bearer ${getAccessToken()}`);
   if (!res.ok) {
     console.log(await res.text());
   }

@@ -1,6 +1,17 @@
-'use client';
+"use client";
+import setInvite from "@/helpers/saveInvite";
+import { redirect } from "next/navigation";
+import isEntired from "@/helpers/entired";
 
-import Invitation_redirect from "../../../components/Invitation_redirect_comp";
-export default function Page() {
-  return <Invitation_redirect />;
+type Params = {
+  params: {
+    invite_id: string;
+  };
+};
+
+export default function Page({ params: { invite_id } }: Params) {
+  setInvite(invite_id);
+  !isEntired()
+    ? redirect(`/signup`)
+    : redirect(`../../../invitations_accept/${invite_id}`);
 }
