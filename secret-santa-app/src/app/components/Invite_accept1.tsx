@@ -7,7 +7,7 @@ import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
 import { useParams } from 'next/navigation';
-import { navigateToAcceptSend1 } from '@/app/actions/navigate_to_accept_send';
+import { navigateToAcceptSend } from '@/app/actions/navigate_to_accept_send';
 
 import { getAccessToken } from "@/helpers/getTokens";
 
@@ -19,7 +19,7 @@ const initialState = {
 }
 
 const InviteAcceptComponent1 = () => {
-  const [state, formAction] = useFormState(navigateToAcceptSend1, initialState);
+  const [state, formAction] = useFormState(navigateToAcceptSend, initialState);
 
 
   const StyledBox = styled(Box)({
