@@ -10,6 +10,7 @@ export default function MyAccount() {
 
   return (
     <div className="container">
+
       <form className="form" action={dispatch}>
         <label >
           Ваше Имя

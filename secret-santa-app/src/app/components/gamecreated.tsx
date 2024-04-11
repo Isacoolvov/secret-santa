@@ -1,14 +1,12 @@
 'use client'
 
 import Stack from '@mui/material/Stack';
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { MainButton } from "@/helpers/uiHelpers";
+import { Grid,Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getGameId } from '@/helpers/getGameId';
 import { useMemo, useState } from 'react';
 import { useParams } from 'next/navigation';
+import { MainButton1, StyledBox } from '@/helpers/styles';
 
 
 const gamecreated = () => {
@@ -18,18 +16,6 @@ const gamecreated = () => {
       const game_id = params.game_id || '';
       setID(`${game_id}`);
     }, [params.game_id]);
-    const gameId =getGameId();
-  const StyledBox = styled(Box)({
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '10px',
-  });
-
-  const MainButton1 = styled(MainButton)({
-    margin: '10px',
-  });
-
-
   return (
 
 

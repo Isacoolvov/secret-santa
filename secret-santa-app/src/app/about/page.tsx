@@ -4,9 +4,6 @@ import * as React from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { SwitchMain, MainButton, SecondaryButton, BootstrapButton } from "@/helpers/uiHelpers";
-
-import Switch from "@mui/material/Switch";
-
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 
@@ -23,7 +20,6 @@ export default function CustomizedButtons() {
             <Button variant="contained" sx={{
                 backgroundColor: 'yellow'
             }}>Создать игру222</Button>
-
 
             <SwitchMain {...label} defaultChecked />
             <SwitchMain {...label} />

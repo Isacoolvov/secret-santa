@@ -1,18 +1,20 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
+import removeAccessToken from "@/helpers/remove-access-token";
+import {  useRouter } from 'next/navigation';
+import { MainButton } from '@/helpers/uiHelpers';
 
 function DeleteAccount() {
   const [data, setData] = useState('');
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>();
+  const router = useRouter()
 
-  useEffect(() => {
-    fetchDelete();
-  }, []);
 
-  async function fetchDelete() {
+  const handleDeleteAccount = async () => {
     try {
       const access = getAccessToken();
+
       const res = await fetch('http://51.107.14.25:8080/settings/delete-account', {
         method: "DELETE",
         headers: {
@@ -20,18 +22,13 @@ function DeleteAccount() {
         }
       });
       const data = await res.text();
-      setData(data);
-      setLoading(false); 
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setLoading(false); 
-    }
-  }
-
-  const handleDeleteAccount = async () => {
-    try {
+      console.log(data);
+       setLoading(false);
       setLoading(true);
-      await fetchDelete();
+      removeAccessToken()
+      console.log(data);
+
+      router.push('/signup')
     } catch (error) {
       console.log('Error deleting account:', error);
       setLoading(false);
@@ -40,10 +37,19 @@ function DeleteAccount() {
 
   return (
     <>
-      <button onClick={handleDeleteAccount}>удалить аккаунт</button>
-      {loading ? <>Loading...</> : <>{data}</>}
+     
+    
+      <MainButton
+        variant="contained"
+        disabled={loading}
+        onClick={handleDeleteAccount}
+        style={{ marginLeft: '180px' ,backgroundColor:'red' ,marginTop: '40px'
+        }}
+      >
+        {loading ? 'Удаление...' : 'Удалить аккаунт'}
+      </MainButton>
+
     </>
   );
 }
-//soon
 export default DeleteAccount;

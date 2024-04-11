@@ -2,6 +2,7 @@
 import { useFormState } from "react-dom";
 import changeP from "../actions/change-password";
 import '../../css/myAccount.css'
+import DeleteAccount from "./deleteAccount";
 export default function changePassword() {
   const [formstate, dispatch] = useFormState(changeP,  null);
   console.log(formstate);
@@ -28,6 +29,7 @@ export default function changePassword() {
 
     
       </form>
+      <DeleteAccount/>
     </div>
   );
 }

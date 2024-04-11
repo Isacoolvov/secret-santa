@@ -1,29 +1,14 @@
 'use client'
 import Stack from '@mui/material/Stack';
-import { Box, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { MainButton, SecondaryButton } from "@/helpers/uiHelpers";
+import { Grid, Typography } from '@mui/material';
+import {  SecondaryButton } from "@/helpers/uiHelpers";
 import Image from 'next/image';
 import Link from 'next/link';
-import { orange } from '@mui/material/colors';
+import { MainButton1, StyledBox } from '@/helpers/styles';
 
 
 
-const InviteThankYouComponent = () => {
-
-
-  const StyledBox = styled(Box)({
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '10px',
-  });
-
-  const MainButton1 = styled(MainButton)({
-    margin: '10px',
-
-  });
-
-
+const myGames = () => {
   return (
 
 
@@ -72,4 +57,4 @@ const InviteThankYouComponent = () => {
   );
 };
 
-export default InviteThankYouComponent;
+export default myGames;

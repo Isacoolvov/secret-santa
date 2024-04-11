@@ -1,16 +1,15 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
-import { Grid } from '@mui/material';
-import { StyledBox } from '@/helpers/styles';
+
 
 type Repo = {
-  name: string;
-  id: string;
-}[];
+  login: string;
+  email: string;
+};
 
-function FetchDataComponent() {
-  const [data, setData] = useState<Repo>([]);
+function FetchUserData() {
+  const [data, setData] = useState<Repo|null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ function FetchDataComponent() {
   async function fetchData() {
     try {
       const access = getAccessToken();
-      const res = await fetch('http://51.107.14.25:8080/games/mygames', {
+      const res = await fetch('http://51.107.14.25:8080/settings/user-info', {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -37,30 +36,17 @@ function FetchDataComponent() {
   }
 
   return (
-    <div>
-      <Grid container justifyContent="center" alignItems="center">
-      <StyledBox style={{width: '500px' , height:'550px'}}>
+    <>
+
       {loading?<>Loading...</>:<>
       
-      <h1>Мои игры </h1>
+      Мои account 
       <br />
-      {data.length === 0 ? <p>У вас нет игр</p> : (
-  <ul>
-    {data.map((item , index) => (
-      <li key={index}>
-        ID: {item.id}, Name: {item.name}
-      </li>
-    ))}
-  </ul>
-       
-  )}
-  </>}
-  </StyledBox>
+      {data === null ? <p>авторизуйтесь</p> :<>{data.login} {data.email}</>}</>}
+ 
 
-  </Grid>
-
-      </div>
+      </>
   )
 }
 
-export default FetchDataComponent;
+export default FetchUserData;
