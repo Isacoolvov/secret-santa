@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
 import { Grid } from '@mui/material';
 import { StyledBox } from '@/helpers/styles';
+import PacmanLoader from "react-spinners/RingLoader";
 
 type Repo = {
   name: string;
@@ -40,7 +41,15 @@ function FetchDataComponent() {
     <div>
       <Grid container justifyContent="center" alignItems="center">
       <StyledBox style={{width: '500px' , height:'550px'}}>
-      {loading?<>Loading...</>:<>
+      {loading?<>
+        <PacmanLoader
+        color='red'
+        loading={loading}
+        
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /></>:<>
       
       <h1>Мои игры </h1>
       <br />
