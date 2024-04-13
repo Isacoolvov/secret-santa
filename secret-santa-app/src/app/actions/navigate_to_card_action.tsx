@@ -4,6 +4,6 @@
 import { redirect } from 'next/navigation'
  
 export async function navigateToCard (data: FormData) {
-  redirect(`/add_contact/${data.get('id')}`)
+  redirect(`/user-contact/${data.get('id')}`)
 }
 
