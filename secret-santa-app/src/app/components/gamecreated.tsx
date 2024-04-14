@@ -9,7 +9,7 @@ import { useParams } from 'next/navigation';
 import { MainButton1, StyledBox } from '@/helpers/styles';
 
 
-const gamecreated = () => {
+const Gamecreated = () => {
     const [ID, setID] = useState('');
     const params = useParams()
     useMemo(() => {
@@ -60,4 +60,4 @@ const gamecreated = () => {
   );
 };
 
-export default gamecreated;
+export default Gamecreated;
