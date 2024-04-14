@@ -60,8 +60,7 @@ export default function SingUp() {
               variant="contained"
               type="submit"
               style={{
-                marginLeft: "190px",
-                width: "180px",
+                marginLeft: "-24px",
                 height: "50px",
                 marginTop: "70px",
               }}

@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { Typography, Grid } from "@mui/material";
 import { getAccessToken } from "@/helpers/getTokens";
 import { StyledBox } from "@/helpers/styles";
-import { useParams } from "next/navigation";
+import {  useParams, useRouter } from "next/navigation";
+import  {navigateToWishList}  from "../navigation/navigate_to_wishList";
 
 export default function UserInfo() {
   const params = useParams();
+  const router =useRouter()
   const game_id = params.game_id || 'dd';
   console.log('useParams' , game_id);
   
@@ -34,9 +36,9 @@ export default function UserInfo() {
       if (response.ok) {
         // Handle success
         console.log(response);
-        
+        router.push(`/wishes/${game_id}`)
       } else {
-        throw new Error('Failed to save data');
+        Promise.reject(new Error('Failed to save data'));
       }
     } catch (error) {
       console.error('Error saving data:', error);
@@ -55,7 +57,7 @@ export default function UserInfo() {
           >
             <b>Contacts</b>
           </Typography>
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form"  onSubmit={handleSubmit}>
             <label>
               Ваш E-mail
               <input
