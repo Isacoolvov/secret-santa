@@ -3,22 +3,25 @@ import Link from "next/link";
 import { useState, useEffect, use } from "react";
 import Wishes from "../components/wishes";
 import sendWishes from "../actions/wish-send";
+
 interface props {
   val: number;
 }
-const arr = [];
+
+const arr: Array<string> = [];
 
 export default function WishList() {
   const [counter, setCounter] = useState<number>(0);
-  const [getWishes, setGetWishes] = useState([""]);
+  const [getWishes, setGetWishes] = useState('');
   const [components, setComponents] = useState<JSX.Element[]>([]);
+
   const handleButtonClick = () => {
     const newCounter = counter + 1;
     if (newCounter < 11) {
       setCounter(newCounter);
       arr.push(getWishes);
       // Создание нового компонента и добавление его в массив
-      const newComponent = <Wishes setGetWishes={setGetWishes} />;
+      const newComponent = <Wishes key={newCounter} setGetWishes={setGetWishes} />;
       setComponents([...components, newComponent]);
     }
   };
@@ -30,7 +33,6 @@ export default function WishList() {
 
   return (
     <div>
-      {/* Рендеринг всех созданных компонентов */}
       {components}
       <button onClick={handleButtonClick}>Добавить</button>
       <button onClick={submitWishes}>Отправить</button>

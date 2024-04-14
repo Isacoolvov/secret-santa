@@ -1,16 +1,19 @@
 "use client";
 import Link from "next/link";
 import isEntired from "@/helpers/entired";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getAccessToken } from "@/helpers/getTokens";
-
+import removeAccessToken from "@/helpers/remove-access-token";
 export default function NavBar() {
     const pathname = usePathname();
     const [changes, setChanges] = useState(false);
     useEffect(() => {
       setChanges(isEntired);
     }, [pathname]);
+    function logout() {
+      removeAccessToken()
+      window.location.reload();
+    }
   return (
     <div className="navBar">
       <nav className="menu">
@@ -65,6 +68,9 @@ export default function NavBar() {
                 <a className="menu-item" href="#">
                   RU
                 </a>
+              </li>
+              <li>
+                <button onClick={logout}>Выйти</button>
               </li>
             </>
           )}

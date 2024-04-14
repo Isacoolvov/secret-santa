@@ -40,8 +40,10 @@ const InviteAcceptComponent1 = () => {
   }, [params.game_id]);
   useEffect(() => {
     if (state.successMessage === "Данные успешно отправлены на сервер") {
+      console.log(state)
       redirect("/wish-list");
     } else if (state.successMessage === "Вы уже являетесь участником игры.") {
+      console.log(state)
       redirect("/wish-list");
     }
   }, [state]);
