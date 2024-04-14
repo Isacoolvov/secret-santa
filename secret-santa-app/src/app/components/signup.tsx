@@ -6,20 +6,21 @@ import { MainButton1, StyledBox } from "@/helpers/styles";
 import Link from "next/link";
 import { Grid, Typography } from "@mui/material";
 import "@/css/myAccount.css";
-import { useRouter } from "next/navigation";
+import { redirect} from "next/navigation";
 export default function SingUp() {
   const [formstate, dispatch] = useFormState(signup, {
     error: null,
     data: null,
   });
-  const router = useRouter();
   console.log(formstate);
   if (formstate?.data != null) {
     saveTokens(formstate.data);
-    if (localStorage.getItem("game_id")) {
-      router.push(`/invitations_accept/${localStorage.getItem("game_id")}`);
+    if (localStorage.getItem("invite_id")) {
+      redirect(`/invitations_accept/${localStorage.getItem("invite_id")}`);
     }
-    router.push("/");
+    else {
+      redirect('/')
+    }
   }
   return (
     <>

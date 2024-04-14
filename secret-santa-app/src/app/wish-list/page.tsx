@@ -1,41 +1,34 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, FormEvent } from "react";
 import Wishes from "../components/wishes";
 import sendWishes from "../actions/wish-send";
 
-interface props {
-  val: number;
-}
+export default function WishLists() {
 
-const arr: Array<string> = [];
+  const [number, setNumber] = useState(3) 
+  function handleButtonClick() {
+    setNumber(prevNumber => prevNumber < 10 ? prevNumber + 1: prevNumber)
+  }
 
-export default function WishList() {
-  const [counter, setCounter] = useState<number>(0);
-  const [getWishes, setGetWishes] = useState('');
-  const [components, setComponents] = useState<JSX.Element[]>([]);
-
-  const handleButtonClick = () => {
-    const newCounter = counter + 1;
-    if (newCounter < 11) {
-      setCounter(newCounter);
-      arr.push(getWishes);
-      // Создание нового компонента и добавление его в массив
-      const newComponent = <Wishes key={newCounter} setGetWishes={setGetWishes} />;
-      setComponents([...components, newComponent]);
+  const submitWishes = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const {currentTarget} = event
+    const arr = []
+    for (let i = 0; i < currentTarget.elements.length; i++) {
+      const el = currentTarget.elements.item(i)
+      if (el instanceof HTMLInputElement) {
+        arr.push(el.value)
+      }
     }
-  };
-
-  const submitWishes = () => {
-    arr.push(getWishes);
+    console.log(arr)
     sendWishes(arr);
   };
-
   return (
-    <div>
-      {components}
-      <button onClick={handleButtonClick}>Добавить</button>
-      <button onClick={submitWishes}>Отправить</button>
-    </div>
+    <form onSubmit={submitWishes}>
+      {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}
+      <button onClick={handleButtonClick} type='button'>Добавить</button>
+      <button>Отправить</button>
+    </form>
   );
 }
