@@ -41,9 +41,9 @@ const InviteParticipants = () => {
     setParticipants([...participants, { name: '', email: '' }]);
   };
 
-  const handleInputChange = (index, event) => {
+  const handleInputChange = (index:any, event:any) => {
     const { name, value } = event.target;
-    const updatedParticipants = [...participants];
+    const updatedParticipants:any = [...participants];
     updatedParticipants[index][name] = value;
     setParticipants(updatedParticipants);
   };
@@ -112,8 +112,11 @@ const InviteParticipants = () => {
 
           </Stack>
           <input type="hidden" name="gameId" value={ID} />
-          <input type="hidden" name="access" value={access} />
+          {access?<>
+            <input type="hidden" name="access" value={access} />
+          </>:<></>}
 
+       
 
           <MainButton1 variant="contained" onClick={handleAddParticipant}>
             Добавить еще участника

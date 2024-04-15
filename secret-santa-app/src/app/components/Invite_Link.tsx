@@ -43,7 +43,7 @@ const InviteLinkComponent = () => {
         setDataFetch(data);
         setLoading(false);
       })
-  }, []);
+  }, [access ,fetchUrl]);
 
   if (isLoading)  <p>Loading...</p>
   if (!dataFetch)  <p>No  data</p>
@@ -74,7 +74,7 @@ const InviteLinkComponent = () => {
       let modifiedUrl = dataFetch.link.replace(/\/invitations\/accept\//, "/invitations_accept/");
       setUrl(modifiedUrl);
     }
-  }, [params.game_id, dataFetch?.link]);
+  }, [dataFetch]);
 
 
   return (

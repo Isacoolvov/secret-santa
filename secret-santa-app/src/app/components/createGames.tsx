@@ -2,7 +2,7 @@
 import { useFormState } from "react-dom";
 import createGame from "../actions/create-games";
 import '../../css/myAccount.css'
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import localsaveGameId from "@/helpers/saveGameId";
 import { useRouter } from "next/navigation";
 import { Box, Grid, Typography, styled } from "@mui/material";
@@ -48,7 +48,8 @@ export default function CreateGames() {
         <span>Максимальная стоимость подарка</span>
          <SwitchMain 
         defaultChecked={priceLimitChecked} 
-        onChange={(e) => setPriceLimitChecked(e.target.checked)} 
+         onClick={(e: React.MouseEvent<HTMLButtonElement>) => setPriceLimitChecked(!priceLimitChecked)}
+    
       />
               </label>  
               <p style={{fontSize:'0.63rem' , marginLeft:'40px' , }}>При включенной опции участникам будет показано ограничение, которому они должны будут следовать</p>

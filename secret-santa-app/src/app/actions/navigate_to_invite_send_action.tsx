@@ -1,6 +1,6 @@
 export async function navigateToInviteSend1(prevState: any, participantsData: FormData) {
   let successMessage = '';
-  let errorMessage = '';
+  let errorMessage;
 
   try {
     const response = await fetch(`http://51.107.14.25:8080/invitations/${participantsData.get('gameId')}/send`, {
@@ -39,7 +39,7 @@ export async function navigateToInviteSend1(prevState: any, participantsData: Fo
        successMessage ='' + responseData;
     }
   } catch (error) {
-    errorMessage = error.message;
+    errorMessage = error;
     errorMessage = ('Ошибка:' +  errorMessage);
   }
 

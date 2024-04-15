@@ -14,9 +14,13 @@ import { getAccessToken } from "@/helpers/getTokens";
 
 import { useFormState } from "react-dom";
 
-const initialState = {
+type initial = {
+  successMessage: string,
+  errorMessage:any,
+};
+const initialState:initial = {
   successMessage: "",
-  errorMessage: "",
+  errorMessage:'',
 };
 
 const InviteAcceptComponent1 = () => {
@@ -65,7 +69,10 @@ const InviteAcceptComponent1 = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="invite_id" value={ID} />
-            <input type="hidden" name="access" value={access} />
+            {access?<>
+              <input type="hidden" name="access" value={access} />
+
+            </>:<></>}
 
             <MainButton1
               variant="contained"
