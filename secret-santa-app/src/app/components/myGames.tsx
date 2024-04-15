@@ -1,17 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
-import { Grid, Box, Typography } from '@mui/material';
-import { RingLoader } from "react-spinners";
+import { Grid, Box, Typography, Link } from '@mui/material';
+import { BarLoader } from "react-spinners";
 import { styled } from '@mui/system';
-
-const StyledBox = styled(Box)({
-  width: '500px',
-  height: '550px',
-  padding: '20px',
-  borderRadius: '10px',
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-});
+import { MainButton1, StyledBox } from '@/helpers/styles';
+import Image from 'next/image';
 
 type Repo = {
   name: string;
@@ -38,43 +32,55 @@ function FetchDataComponent() {
       });
       const data: Repo = await res.json();
       setData(data);
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setLoading(false); 
+      setLoading(false);
     }
   }
 
   return (
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
-        {loading ? (
-          <RingLoader color='red' loading={loading} size={50} aria-label="Loading Spinner" data-testid="loader" />
-        ) : (
-          <>
-            <Typography variant="h4" gutterBottom>Мои игры</Typography>
-            {data.length === 0 ? (
-              <Typography>У вас нет игр</Typography>
-            ) : (
-              <Grid container spacing={1}>
-                {data.map((item, index) => (
-                  <Grid item key={index}>
-                    <Box
-                      bgcolor="primary.main"
-                      color="primary.contrastText"
-                      borderRadius="borderRadius"
-                      p={2}
-                      textAlign="center"
-                    >
-                      <Typography>ID: {item.id}</Typography>
-                      <Typography>Name: {item.name}</Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            )}
-          </>
-        )}
+        <Grid >
+          {loading ? (
+            <BarLoader color='orange' loading={loading} aria-label="Loading Spinner" data-testid="loader" />
+          ) : (
+            <>
+              <Typography variant="h4" gutterBottom>Мои игры</Typography>
+              {data.length === 0 ? (
+                <Typography>У вас нет игр</Typography>
+              ) : (
+                <Grid container spacing={1}>
+                  {data.map((item, index) => (
+                    <Grid item key={index}>
+                      <Box
+                        color="rgb(151, 151, 151)"
+                        borderRadius="20px"
+                        p={2}
+                        textAlign="center"
+                        border={2}
+                        borderColor="rgb(192, 227, 229)"
+                      >
+                        <Typography variant="h5" gutterBottom>
+                          <Link href={`/${item.id}`} style={{ color: 'rgb(240, 93, 0)', textDecoration: 'none' }}>{item.name}</Link>
+                        </Typography>
+
+                        <Typography align="center" >
+                          <Image src="/img/santa_rider.png" alt="santa_thum" width={100} height={100} priority={true} />
+                        </Typography>
+
+                        <Typography>Вы участник</Typography>
+                        <Typography>Вы Организатор</Typography>
+                        <Typography>Количество участников: </Typography>
+                      </Box>
+                    </Grid>
+                  ))}
+                </Grid>
+              )}
+            </>
+          )}
+        </Grid>
       </StyledBox>
     </Grid>
   );
