@@ -4,31 +4,65 @@ import changeLogin from "../actions/my-account";
 // import saveTokens from "@/helpers/save-tokens";
 import removeAccessToken from "@/helpers/remove-access-token";
 import '../../css/myAccount.css'
+import { Box, Grid, TextField, Button, Typography } from '@mui/material';
+import { MainButton1, StyledBox } from "@/helpers/styles";
+import Stack from '@mui/material/Stack';
+
+
 export default function MyAccount() {
-  const [formstate, dispatch] = useFormState(changeLogin,  null );
+  const [formstate, dispatch] = useFormState(changeLogin, null);
   console.log(formstate);
 
   return (
-    <div className="container">
+    <>
+      <Grid container justifyContent="center" alignItems="center">
+        <StyledBox>
 
-      <form className="form" action={dispatch}>
-        <label >
-          Ваше Имя
-        <input  type="text" name="newLogin" placeholder="   Имя Фамилия"/>
-        </label>
-        <br />
-        <label >
-          Ваш Email
-        <input type="email" name="newEmail" placeholder="   example@gmail.com" />
-        </label>     
-        <br />  
-        <button className="save-btn" type="submit">Сохранить</button><br />
-        {/* {formstate?<></>:<></>} */}
-        <p className="result">{formstate?.data?<>
-        {formstate.data}
-        {removeAccessToken()}
-        </>:<></>}{formstate?.error}</p>
-      </form>
-    </div>
+              {/* {formstate?<></>:<></>} */}
+              <p className="result">{formstate?.data ? <>
+                {formstate.data}
+                {removeAccessToken()}
+              </> : <></>}{formstate?.error}</p>
+
+
+
+          <form className="form" action={dispatch}>
+
+            <Stack m={2} spacing={3}>
+
+              <TextField
+                label="Ваше Имя"
+                variant="outlined"
+                fullWidth
+                name="newLogin"
+              />
+
+              <TextField
+                label="Ваш Email"
+                variant="outlined"
+                fullWidth
+                name="newEmail"
+              />
+
+
+              <MainButton1
+                variant="contained"
+                type="submit"
+                style={{
+                  marginLeft: "-24px",
+                  height: "50px",
+                  marginTop: "70px",
+                }}
+              >
+                Сохранить
+              </MainButton1>
+
+
+            </Stack>
+
+          </form>
+        </StyledBox>
+      </Grid>
+    </>
   );
 }
