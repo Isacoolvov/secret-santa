@@ -1,6 +1,6 @@
 
 import '../css/home.css'
-import { MainButton, SecondaryButton } from '@/helpers/uiHelpers';
+import { MainButton } from '@/helpers/uiHelpers';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
 const Home = () => {
@@ -13,7 +13,6 @@ const Home = () => {
   <p className='content-p'>Организуй тайный обмен подарками между друзьями или коллегами</p>
   <Stack  direction="row">
 <MainButton variant="contained">Создать игру</MainButton>
-            <SecondaryButton variant="contained">Жеребьевка</SecondaryButton>
             </Stack>
 </section>
 
