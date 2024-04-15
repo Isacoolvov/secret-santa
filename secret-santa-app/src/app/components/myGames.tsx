@@ -1,9 +1,17 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
-import { Grid } from '@mui/material';
-import { StyledBox } from '@/helpers/styles';
-import PacmanLoader from "react-spinners/RingLoader";
+import { Grid, Box, Typography } from '@mui/material';
+import { RingLoader } from "react-spinners";
+import { styled } from '@mui/system';
+
+const StyledBox = styled(Box)({
+  width: '500px',
+  height: '550px',
+  padding: '20px',
+  borderRadius: '10px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+});
 
 type Repo = {
   name: string;
@@ -38,38 +46,38 @@ function FetchDataComponent() {
   }
 
   return (
-    <div>
-      <Grid container justifyContent="center" alignItems="center">
-      <StyledBox style={{width: '500px' , height:'550px'}}>
-      {loading?<>
-        <PacmanLoader
-        color='red'
-        loading={loading}
-        
-        size={50}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      /></>:<>
-      
-      <h1>Мои игры </h1>
-      <br />
-      {data.length === 0 ? <p>У вас нет игр</p> : (
-  <ul>
-    {data.map((item , index) => (
-      <li key={index}>
-        ID: {item.id}, Name: {item.name}
-      </li>
-    ))}
-  </ul>
-       
-  )}
-  </>}
-  </StyledBox>
-
-  </Grid>
-
-      </div>
-  )
+    <Grid container justifyContent="center" alignItems="center">
+      <StyledBox>
+        {loading ? (
+          <RingLoader color='red' loading={loading} size={50} aria-label="Loading Spinner" data-testid="loader" />
+        ) : (
+          <>
+            <Typography variant="h4" gutterBottom>Мои игры</Typography>
+            {data.length === 0 ? (
+              <Typography>У вас нет игр</Typography>
+            ) : (
+              <Grid container spacing={1}>
+                {data.map((item, index) => (
+                  <Grid item key={index}>
+                    <Box
+                      bgcolor="primary.main"
+                      color="primary.contrastText"
+                      borderRadius="borderRadius"
+                      p={2}
+                      textAlign="center"
+                    >
+                      <Typography>ID: {item.id}</Typography>
+                      <Typography>Name: {item.name}</Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </>
+        )}
+      </StyledBox>
+    </Grid>
+  );
 }
 
 export default FetchDataComponent;
