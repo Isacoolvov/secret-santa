@@ -63,7 +63,7 @@ function FetchDataComponent() {
                         borderColor="rgb(192, 227, 229)"
                       >
                         <Typography variant="h5" gutterBottom>
-                          <Link href={`/${item.id}`} style={{ color: 'rgb(240, 93, 0)', textDecoration: 'none' }}>{item.name}</Link>
+                          <Link href={`/reshuffle/${item.id}`} style={{ color: 'rgb(240, 93, 0)', textDecoration: 'none' }}>{item.name}</Link>
                         </Typography>
 
                         <Typography align="center" >
