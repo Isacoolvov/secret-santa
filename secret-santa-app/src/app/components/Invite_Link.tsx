@@ -9,6 +9,9 @@ import { MainButton } from "@/helpers/uiHelpers";
 import { useParams } from 'next/navigation';
 import { getAccessToken } from "@/helpers/getTokens";
 
+type DataFetchType = {
+  link: string | null;
+}|null
 
 
 
@@ -20,7 +23,7 @@ const InviteLinkComponent = () => {
   const [url, setUrl] = useState('');
   const [copied, setCopied] = useState(false);
 
-  const [dataFetch, setDataFetch] = useState(null);
+  const [dataFetch, setDataFetch] = useState<DataFetchType>(null);
   const [isLoading, setLoading] = useState(true);
   const access = getAccessToken();
 
@@ -65,9 +68,6 @@ const InviteLinkComponent = () => {
   });
 
 
-  type DataFetchType = {
-    link: string;
-  }
 
   useMemo(() => {
     if (dataFetch && dataFetch.link) {

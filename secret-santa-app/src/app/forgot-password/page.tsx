@@ -2,10 +2,10 @@
 import forgotPassw from "../actions/forgot-pass";
 import { useState } from "react";
 
-export default function forgotPass() {
+export default function ForgotPass() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  async function sendToMail() {
+  async function SendToMail() {
     const res = forgotPassw(email);
     setError(await res);
     if (error != "error") {
@@ -22,7 +22,7 @@ export default function forgotPass() {
         type="email"
         name="email"
       />
-      <button onClick={sendToMail}>Отправить пароль</button>
+      <button onClick={SendToMail}>Отправить пароль</button>
       <p>{error}</p>
     </div>
   );
