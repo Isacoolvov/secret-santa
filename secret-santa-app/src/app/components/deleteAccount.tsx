@@ -4,6 +4,7 @@ import { getAccessToken } from "@/helpers/getTokens";
 import removeAccessToken from "@/helpers/remove-access-token";
 import {  useRouter } from 'next/navigation';
 import { MainButton } from '@/helpers/uiHelpers';
+import { BASE_URL } from '@/helpers/helpers_base_url';
 
 function DeleteAccount() {
   const [data, setData] = useState('');
@@ -15,7 +16,7 @@ function DeleteAccount() {
     try {
       const access = getAccessToken();
 
-      const res = await fetch('http://51.107.14.25:8080/settings/delete-account', {
+      const res = await fetch(`${BASE_URL}/settings/delete-account`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${access}`,

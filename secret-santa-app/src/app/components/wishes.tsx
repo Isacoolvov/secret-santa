@@ -1,4 +1,7 @@
 "use client";
+
+import { useState } from "react";
+
 // import { useState } from "react";
 
 export type WhishesProps = {
@@ -6,13 +9,16 @@ export type WhishesProps = {
 }
 
 export default function Wishes({ name }: WhishesProps) {
-  // const [want, setWant] = useState("");
+  const [counter, setCounter] = useState(1);
   // console.log(want);
 
   return (
+    <label >
+      Подарок
     <input
       type="text"
       name={name}
     />
+    </label>
   );
 }

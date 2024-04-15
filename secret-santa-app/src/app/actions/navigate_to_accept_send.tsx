@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/helpers/helpers_base_url";
+
 export async function navigateToAcceptSend(
   prevState: any,
   participantsData: FormData
@@ -7,7 +9,7 @@ export async function navigateToAcceptSend(
 
   try {
     const response = await fetch(
-      `http://51.107.14.25:8080/invitations/accept/${participantsData.get(
+      `${BASE_URL}/invitations/accept/${participantsData.get(
         "invite_id"
       )}`,
       {
@@ -40,7 +42,7 @@ export async function navigateToAcceptSend(
     }
 
   } catch (error) {
-    
+
     errorMessage = error;
   }
 

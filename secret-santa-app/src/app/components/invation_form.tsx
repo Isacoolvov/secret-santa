@@ -34,30 +34,31 @@ export default function InvitationForm() {
   
 
   return (
-    <Grid container justifyContent="center" alignItems="center">
-      <StyledBox>
+    <Grid container justifyContent="center" alignItems="center" >
+      <StyledBox style={{width: '500px' , height:'500px'}}>
         <Grid item xs={12}>
-          <Typography align="center" variant="h5" gutterBottom>
-            Добавить участников
+          <Typography align="center" variant="h5" style={{marginTop:'50px'}}>
+            <b >Добавить участников</b>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <form action={navigateToCard}>
-            <MainButton1 variant="contained" type="submit">Создать свою карточку участников</MainButton1>
+            <MainButton1 variant="contained" type="submit"  style={{marginTop:'50px' , marginLeft: '70px' ,width:'350px' , height:'60px' ,fontSize:'1rem'}}>Создать свою карточку участников</MainButton1>
             <input type="hidden" name="id" value={ID} />
             
           </form>
         </Grid>
         <Grid item xs={12}>
           <form action={navigateToAddParticipiant}>
-            <MainButton1 variant="contained" type="submit">Добавить участников вручную</MainButton1>
+            <MainButton1 variant="contained" type="submit"
+            style={{ marginLeft: '70px' ,width:'350px' , height:'60px' ,fontSize:'1rem'}}>Добавить участников вручную</MainButton1>
             <input type="hidden" name="id" value={ID} />
 
           </form>
         </Grid>
         <Grid item xs={12}>
           <form action={navigateToInviteParticipiant}>
-            <MainButton1 variant="contained" type="submit">Пригласить по ссылке</MainButton1>
+            <MainButton1 variant="contained" type="submit" style={{ marginLeft: '70px' ,width:'350px' , height:'60px' ,fontSize:'1rem'}}>Пригласить по ссылке</MainButton1>
             <input type="hidden" name="id" value={ID} />
 
           </form>

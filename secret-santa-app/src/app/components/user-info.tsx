@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
+import { BASE_URL } from '@/helpers/helpers_base_url';
 
 
 type Repo = {
@@ -19,7 +20,7 @@ function FetchUserData() {
   async function fetchData() {
     try {
       const access = getAccessToken();
-      const res = await fetch('http://51.107.14.25:8080/settings/user-info', {
+      const res = await fetch(`${BASE_URL}/settings/user-info`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

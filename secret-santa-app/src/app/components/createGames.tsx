@@ -2,7 +2,7 @@
 import { useFormState } from "react-dom";
 import createGame from "../actions/create-games";
 import '../../css/myAccount.css'
-import {  useState } from "react";
+import { ChangeEvent, useState } from "react";
 import localsaveGameId from "@/helpers/saveGameId";
 import { useRouter } from "next/navigation";
 import { Box, Grid, Typography, styled } from "@mui/material";

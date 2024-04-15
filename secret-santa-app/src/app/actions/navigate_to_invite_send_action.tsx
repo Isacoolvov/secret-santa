@@ -1,9 +1,11 @@
+import { BASE_URL } from "@/helpers/helpers_base_url";
+
 export async function navigateToInviteSend1(prevState: any, participantsData: FormData) {
   let successMessage = '';
   let errorMessage;
 
   try {
-    const response = await fetch(`http://51.107.14.25:8080/invitations/${participantsData.get('gameId')}/send`, {
+    const response = await fetch(`${BASE_URL}/invitations/${participantsData.get('gameId')}/send`, {
       method: 'POST',
       headers: {
         'accept': '*/*',

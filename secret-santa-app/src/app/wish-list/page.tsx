@@ -3,10 +3,12 @@ import Link from "next/link";
 import { useState, useEffect, use, FormEvent } from "react";
 import Wishes from "../components/wishes";
 import sendWishes from "../actions/wish-send";
-
+import { Grid } from "@mui/material";
+import { MainButton1, StyledBox } from "@/helpers/styles";
+import '@/css/myAccount.css'
 export default function WishLists() {
 
-  const [number, setNumber] = useState(3) 
+  const [number, setNumber] = useState(1) 
   function handleButtonClick() {
     setNumber(prevNumber => prevNumber < 10 ? prevNumber + 1: prevNumber)
   }
@@ -25,11 +27,28 @@ export default function WishLists() {
     sendWishes(arr);
   };
   return (
-    <form onSubmit={submitWishes}>
-      <h2>Пожелания к подарку</h2>
-      {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}
-      <button onClick={handleButtonClick} type='button'>Добавить</button>
-      <button>Отправить</button>
-    </form>
+    <>
+    <Grid container justifyContent="center" alignItems="center">
+        <StyledBox style={{ width: "550px", height: "600px" }}>
+        <form onSubmit={submitWishes}>
+        <h2>Пожелания к подарку</h2>
+
+            <label>
+            {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}
+            </label>
+            <button onClick={handleButtonClick} type='button'>Добавить</button>
+            <MainButton1 
+            href="/wish-list/CardCreated"
+            variant="contained"
+           type="submit"
+            style={{marginTop:'75px',marginLeft: '190px' ,width:'180px' ,height:'50px' }}
+          >
+        Далее
+          </MainButton1>
+          </form>
+        </StyledBox>
+      </Grid>
+
+    </>
   );
 }

@@ -1,7 +1,8 @@
 import { getAccessToken } from "@/helpers/getTokens";
+import { BASE_URL } from "@/helpers/helpers_base_url";
 export default async function getGameId(){
     const res = await fetch(
-        `http://51.107.14.25:8080/invitations/accept/${localStorage.getItem(
+        `${BASE_URL}/invitations/accept/${localStorage.getItem(
           "invite_id"
         )}`,
         {

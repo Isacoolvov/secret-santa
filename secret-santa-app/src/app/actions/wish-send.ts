@@ -1,4 +1,5 @@
 import { getAccessToken } from "@/helpers/getTokens";
+import { BASE_URL } from "@/helpers/helpers_base_url";
 
 export default async function sendWishes(values: Array<string>) {
   const newValues = values.slice(1);
@@ -17,7 +18,7 @@ export default async function sendWishes(values: Array<string>) {
     }
   );
   console.log(`Bearer ${getAccessToken()}`);
-  console.log(`http://51.107.14.25:8080/wishlist/${localStorage.getItem(
+  console.log(`${BASE_URL}/wishlist/${localStorage.getItem(
     "id"
   )}/create-wishlist`)
   

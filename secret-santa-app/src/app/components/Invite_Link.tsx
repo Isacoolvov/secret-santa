@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import { MainButton } from "@/helpers/uiHelpers";
 import { useParams } from 'next/navigation';
 import { getAccessToken } from "@/helpers/getTokens";
+import { BASE_URL } from '@/helpers/helpers_base_url';
 
 type DataFetchType = {
   link: string | null;
@@ -28,7 +29,7 @@ const InviteLinkComponent = () => {
   const access = getAccessToken();
 
 
-  const fetchUrl = `http://51.107.14.25:8080/invitations/generate-link?gameId=${game_id}`;
+  const fetchUrl = `${BASE_URL}/invitations/generate-link?gameId=${game_id}`;
   useEffect(() => {
     fetch(fetchUrl, {
       method: 'GET',

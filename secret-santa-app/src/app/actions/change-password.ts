@@ -1,5 +1,5 @@
 import { getAccessToken } from "@/helpers/getTokens";
-
+import { BASE_URL } from "@/helpers/helpers_base_url";
 export default async function changeP(
   currentState: unknown,
   formData: FormData
@@ -16,7 +16,7 @@ console.log(access);
   const confirmPassword = formData.get("confirmPassword");
 
   const res = await fetch(
-    "http://51.107.14.25:8080/settings/change-password",
+    `${BASE_URL}/settings/change-password`,
     {
       method: "POST",
       headers: {

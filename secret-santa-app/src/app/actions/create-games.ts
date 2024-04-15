@@ -1,4 +1,5 @@
 import { getAccessToken } from "@/helpers/getTokens";
+import { BASE_URL } from "@/helpers/helpers_base_url";
 import { redirect } from "next/navigation";
 
 export default async function createGamee(
@@ -19,7 +20,7 @@ console.log(access);
 
   
   const res = await fetch(
-    "http://51.107.14.25:8080/games/create-game",
+    `${BASE_URL}/games/create-game`,
     {
       method: "POST",
       headers: {

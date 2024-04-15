@@ -1,6 +1,8 @@
+import { BASE_URL } from "@/helpers/helpers_base_url";
+
 export default async function forgotPassw(email: string) {
     const res = await fetch(
-      `http://51.107.14.25:8080/auth/forgot-password?email=${email.replace(
+      `${BASE_URL}/auth/forgot-password?email=${email.replace(
         "@",
         "%40"
       )}`,
