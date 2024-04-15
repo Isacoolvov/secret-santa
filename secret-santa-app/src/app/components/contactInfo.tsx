@@ -15,7 +15,8 @@ export default function UserInfo() {
   const [dataFetch, setDataFetch] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const access = getAccessToken();
-  const fetchUrl = `http://51.107.14.25:8080/gameuser/${game_id}/contact-info`;
+  const game = localStorage.getItem('id')
+  const fetchUrl = `http://51.107.14.25:8080/gameuser/${localStorage.getItem('id')}/contact-info`;
 
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -36,7 +37,7 @@ export default function UserInfo() {
       if (response.ok) {
         // Handle success
         console.log(response);
-        router.push(`/wishes/${game_id}`)
+        // router.push(`/wish-list/${game_id}`)
       } else {
         Promise.reject(new Error('Failed to save data'));
       }

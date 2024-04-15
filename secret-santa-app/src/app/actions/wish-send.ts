@@ -4,9 +4,7 @@ export default async function sendWishes(values: Array<string>) {
   const newValues = values.slice(1);
 
   const res = await fetch(
-    `http://51.107.14.25:8080/wishlist/${localStorage.getItem(
-      "GameId"
-    )}/create-wishlist`,
+    `http://51.107.14.25:8080/wishlist/${localStorage.getItem('id')}/create-wishlist`,
     {
       method: "POST",
       headers: {
@@ -20,10 +18,14 @@ export default async function sendWishes(values: Array<string>) {
   );
   console.log(`Bearer ${getAccessToken()}`);
   console.log(`http://51.107.14.25:8080/wishlist/${localStorage.getItem(
-    "GameId"
+    "id"
   )}/create-wishlist`)
   
   if (!res.ok) {
     console.log(await res.text());
   }
+  const data = await res.text();
+  console.log(data);
+  console.log(res);
+  return data
 }
