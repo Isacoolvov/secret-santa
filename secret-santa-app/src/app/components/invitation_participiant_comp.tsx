@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import { navigateToInviteSend1 } from '@/app/actions/navigate_to_invite_send_action';
 import { useParams } from 'next/navigation'
 import { useMemo } from 'react';
-
+import '@/css/myAccount.css'
 import { useFormState } from 'react-dom'
 //import Alert from '@mui/material/Alert';
 

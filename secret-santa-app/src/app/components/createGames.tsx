@@ -2,12 +2,13 @@
 import { useFormState } from "react-dom";
 import createGame from "../actions/create-games";
 import '../../css/myAccount.css'
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import localsaveGameId from "@/helpers/saveGameId";
 import { useRouter } from "next/navigation";
 import { Box, Grid, Typography, styled } from "@mui/material";
 import { MainButton, SwitchMain } from "@/helpers/uiHelpers";
 import { MainButton1, StyledBox } from "@/helpers/styles";
+import PacmanLoader from "react-spinners/ClockLoader";
 
 export default function CreateGames() {
   const [formstate, createdispatch] = useFormState(createGame, {
@@ -16,12 +17,20 @@ export default function CreateGames() {
   });
   const router =useRouter()
   const [priceLimitChecked ,setPriceLimitChecked] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false);
+
   console.log(formstate);
+
+useEffect(() => {
   if (formstate?.data != null) {
+    setLoading(true);
     localsaveGameId(formstate.data.id);
-    console.log(formstate.data.id);
-    router.push(`/gameCreated/${formstate.data.id}`)
+    console.log(formstate.data.id);  
+    setTimeout(() => {
+      router.push(`/gameCreated/${formstate.data.id}`);
+    }, 2000); 
   }
+}, [formstate])
   return (
     <div>
         
@@ -61,6 +70,16 @@ export default function CreateGames() {
            type="submit"
             style={{marginLeft: '190px' ,width:'180px' ,height:'50px' }}
           >
+            {loading?<> 
+              <PacmanLoader
+        color='green'
+        loading={loading}
+        
+        size={25}
+        aria-label="Loading Spinner"
+        data-testid="loader"></PacmanLoader>
+            
+            </>:<></>}
         Создать игру
 
           </MainButton1>
