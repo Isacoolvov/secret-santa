@@ -26,6 +26,7 @@ export default function WishLists() {
   };
   return (
     <form onSubmit={submitWishes}>
+      <h2>Пожелания к подарку</h2>
       {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}
       <button onClick={handleButtonClick} type='button'>Добавить</button>
       <button>Отправить</button>

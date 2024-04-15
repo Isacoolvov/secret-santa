@@ -37,7 +37,7 @@ export default function UserInfo() {
       if (response.ok) {
         // Handle success
         console.log(response);
-        // router.push(`/wish-list/${game_id}`)
+        router.push(`/wish-list/`)
       } else {
         Promise.reject(new Error('Failed to save data'));
       }
