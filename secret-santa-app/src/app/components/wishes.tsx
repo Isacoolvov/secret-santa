@@ -1,6 +1,6 @@
 "use client";
 
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
 // import { useState } from "react";
 
@@ -14,7 +14,11 @@ export default function Wishes({ name }: WhishesProps) {
 const number = name
   return (
     <>
- Пожелание №{Number(number) + 1}
+
+<Typography variant="body1" gutterBottom>
+        Пожелание №{Number(number) + 1}
+      </Typography>
+
     <TextField
     label="Описание"
     variant="outlined"
