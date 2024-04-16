@@ -1,13 +1,12 @@
-'use client'
-import { BASE_URL } from "@/helpers/helpers_base_url";
-
+'use client';
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
-import { Grid } from '@mui/material';
-import { StyledBox } from '@/helpers/styles';
-import PacmanLoader from "react-spinners/RingLoader";
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { Grid, Box, Typography, Link } from '@mui/material';
+import { BarLoader } from "react-spinners";
+import { styled } from '@mui/system';
+import { MainButton1, StyledBox } from '@/helpers/styles';
+import Image from 'next/image';
+
 type Repo = {
   name: string;
   id: string;
@@ -21,13 +20,10 @@ function FetchDataComponent() {
     fetchData();
   }, []);
 
-  console.log(BASE_URL);
-  console.log("BASE_URL" ,'bASE');
-
   async function fetchData() {
     try {
       const access = getAccessToken();
-      const res = await fetch(`${BASE_URL}/games/mygames`, {
+      const res = await fetch('http://51.107.14.25:8080/games/mygames', {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,46 +32,58 @@ function FetchDataComponent() {
       });
       const data: Repo = await res.json();
       setData(data);
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setLoading(false); 
+      setLoading(false);
     }
   }
 
   return (
-    <div>
-      <Grid container justifyContent="center" alignItems="center">
-      <StyledBox style={{width: '500px' , height:'550px'}}>
-      {loading?<>
-        <PacmanLoader
-        color='red'
-        loading={loading}
-        
-        size={50}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      /></>:<>
-      
-      <h1>Мои игры </h1>
-      <br />
-      {data.length === 0 ? <p>У вас нет игр</p> : (
-  <ul>
-    {data.map((item , index) => (
-      <li key={index}>
-        ID: {item.id}, Name: {item.name}
-      </li>
-    ))}
-  </ul>
-       
-  )}
-  </>}
-  </StyledBox>
+    <Grid container justifyContent="center" alignItems="center">
+      <StyledBox style={{ width: "550px",  }}>
+        <Grid style={{marginLeft:'50px'}}>
+          {loading ? (
+            <BarLoader color='orange' loading={loading} aria-label="Loading Spinner" data-testid="loader" />
+          ) : (
+            <>
+              <Typography variant="h4" gutterBottom>Мои игры</Typography>
+              {data.length === 0 ? (
+                <Typography>У вас нет игр</Typography>
+              ) : (
+                <Grid container spacing={1}>
+                  {data.map((item, index) => (
+                    <Grid item key={index}>
+                      <Box
+                        color="rgb(151, 151, 151)"
+                        borderRadius="20px"
+                        p={2}
+                        textAlign="center"
+                        border={2}
+                        borderColor="rgb(192, 227, 229)"
+                      >
+                        <Typography variant="h5" gutterBottom>
+                          <Link href={`/reshuffle/${item.id}`} style={{ color: 'rgb(240, 93, 0)', textDecoration: 'none' }}>{item.name}</Link>
+                        </Typography>
 
-  </Grid>
+                        <Typography align="center" >
+                          <Image src="/img/santa_thumb.png" alt="santa_thum" width={100} height={100} priority={true} />
+                        </Typography>
 
-      </div>
-  )
+                        <Typography>Вы участник</Typography>
+                        <Typography>Вы Организатор</Typography>
+                        <Typography>Количество участников: </Typography>
+                      </Box>
+                    </Grid>
+                  ))}
+                </Grid>
+              )}
+            </>
+          )}
+        </Grid>
+      </StyledBox>
+    </Grid>
+  );
 }
 
 export default FetchDataComponent;

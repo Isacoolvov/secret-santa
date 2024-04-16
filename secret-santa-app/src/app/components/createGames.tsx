@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Box, Grid, Typography, styled } from "@mui/material";
 import { MainButton, SwitchMain } from "@/helpers/uiHelpers";
 import { MainButton1, StyledBox } from "@/helpers/styles";
-import PacmanLoader from "react-spinners/ClockLoader";
+import PacmanLoader from "react-spinners/BarLoader";
 
 export default function CreateGames() {
   const [formstate, createdispatch] = useFormState(createGame, {
@@ -75,7 +75,6 @@ useEffect(() => {
         color='green'
         loading={loading}
         
-        size={25}
         aria-label="Loading Spinner"
         data-testid="loader"></PacmanLoader>
             
