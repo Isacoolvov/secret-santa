@@ -44,7 +44,7 @@ function FetchUserData() {
       {loading ? <>Loading...</> : <>
         <Grid item xs={12}>
           <Typography align="center" variant="h5" gutterBottom>
-            Мои аккаунт
+            Мой аккаунт
           </Typography>
         </Grid>
 
