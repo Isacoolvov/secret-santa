@@ -5,15 +5,15 @@ import { redirect, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import removeAccessToken from "@/helpers/remove-access-token";
 export default function NavBar() {
-    const pathname = usePathname();
-    const [changes, setChanges] = useState(false);
-    useEffect(() => {
-      setChanges(isEntired);
-    }, [pathname]);
-    function logout() {
-      removeAccessToken()
-      window.location.reload();
-    }
+  const pathname = usePathname();
+  const [changes, setChanges] = useState(false);
+  useEffect(() => {
+    setChanges(isEntired);
+  }, [pathname]);
+  function logout() {
+    removeAccessToken()
+    window.location.reload();
+  }
   return (
     <div className="navBar">
       <nav className="menu">
@@ -31,28 +31,28 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <a className="menu-item" href="#">
+                <Link className="menu-item" href="/#">
                   |
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="menu-item" href="#">
+                <Link className="menu-item" href="/#">
                   RU
-                </a>
+                </Link>
               </li>
             </>
           ) : (
             <>
-              
+
               <li >
-                <Link  className='menu-item' href="/myGames">Мои Игры
-              </Link>
+                <Link className='menu-item' href="/myGames">Мои Игры
+                </Link>
               </li>
 
               <li>
-                <a className="menu-item" href="#">
+                <Link className="menu-item" href="/#">
                   Уведомления
-                </a>
+                </Link>
               </li>
               <li>
                 <Link className="menu-item" href="/myAccount">
@@ -60,17 +60,21 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <a className="menu-item" href="#">
+                <Link className="menu-item" href="/#">
                   |
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="menu-item" href="#">
+                <Link className="menu-item" href="/#">
                   RU
-                </a>
+                </Link>
               </li>
               <li>
-                <button onClick={logout}>Выйти</button>
+
+                <Link className="menu-item" href="/#" onClick={logout}>
+                  Выйти
+                </Link>
+
               </li>
             </>
           )}
