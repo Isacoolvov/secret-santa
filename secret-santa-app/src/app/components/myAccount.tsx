@@ -1,9 +1,8 @@
 "use client";
 import { useFormState } from "react-dom";
 import changeLogin from "../actions/my-account";
-// import saveTokens from "@/helpers/save-tokens";
 import removeAccessToken from "@/helpers/remove-access-token";
-import '../../css/myAccount.css'
+
 import { Box, Grid, TextField, Button, Typography } from '@mui/material';
 import { MainButton1, StyledBox } from "@/helpers/styles";
 import Stack from '@mui/material/Stack';
@@ -19,10 +18,7 @@ export default function MyAccount({name ,email}:Props) {
 
   return (
     <>
-      <Grid container justifyContent="center" alignItems="center">
-        <StyledBox>
 
-              {/* {formstate?<></>:<></>} */}
               <p className="result">{formstate?.data ? <>
                 {formstate.data}
                 {removeAccessToken()}
@@ -32,7 +28,7 @@ export default function MyAccount({name ,email}:Props) {
 
           <form className="form" action={dispatch}>
 
-            <Stack m={2} spacing={3}>
+          <Stack m={2} spacing={3}>
 
               <TextField
                 label={name}
@@ -53,9 +49,10 @@ export default function MyAccount({name ,email}:Props) {
                 variant="contained"
                 type="submit"
                 style={{
-                  marginLeft: "-24px",
+        
                   height: "50px",
-                  marginTop: "70px",
+                  marginBottom: "70px",
+                  marginTop: "30px",
                 }}
               >
                 Сохранить
@@ -65,8 +62,6 @@ export default function MyAccount({name ,email}:Props) {
             </Stack>
 
           </form>
-        </StyledBox>
-      </Grid>
     </>
   );
 }
