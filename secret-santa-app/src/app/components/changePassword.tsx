@@ -53,9 +53,9 @@ export default function ChangePassword() {
             variant="contained"
             type="submit"
             style={{
-              marginLeft: "-24px",
               height: "50px",
-              marginTop: "70px",
+              marginBottom: "70px",
+              marginTop: "30px",
             }}
           >
             Сохранить
