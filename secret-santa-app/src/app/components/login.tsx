@@ -4,9 +4,10 @@ import login from "../actions/log-in";
 import saveTokens from "@/helpers/save-tokens";
 import { useRouter } from "next/navigation";
 import { MainButton1, StyledBox } from "@/helpers/styles";
-import { Grid, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import "@/css/myAccount.css";
+import Stack from '@mui/material/Stack';
 
 export default function Login() {
   const router = useRouter();
@@ -33,34 +34,61 @@ export default function Login() {
             <b> Вход</b>
           </Typography>
           <form className="form" action={dispatch}>
-            <label>
-              Ваш E-mail
-              <input
-                type="email"
-                name="email"
-                placeholder="exemple@gmail.com"
-              />
-            </label>
-            <label>
-              Ваш Password
-              <input type="password" name="password" placeholder="password" />
-            </label>
-            <br />
+          <Stack m={2} spacing={3}>
+
+            <TextField
+              label="Ваш E-mail"
+              variant="outlined"
+              fullWidth
+              name="email"
+            />
+
+
+            <TextField
+              label="Ваш Password"
+              variant="outlined"
+              fullWidth
+              name="password"
+            />
+
+
             <span
               style={{
-                marginLeft: "190px",
+                marginLeft: "11.875rem",
                 fontSize: "0.94rem",
                 color: "red",
               }}
             >
               {formstate?.error}
             </span>
+            <MainButton1
+              variant="contained"
+              type="submit"
+              style={{
+                width: "11.25rem",
+                height: "3.125rem",
+                marginLeft: "10rem",
+              }}
+            >
+              Войти
+            </MainButton1>
 
-            <br />
+          
+            <span
+              style={{
+                fontSize: "0.87rem",
+                color: "rgb(151, 151, 151)",
+                marginLeft: "4.375rem",
+              }}
+            >
+              Продолжая, вы даете согласие на обработку персональных данных.
+            </span>
+
+           
             <Link href="/forgot-password">
               <span
                 style={{
-                  marginLeft: "190px",
+                  marginLeft: "11.875rem",
                   fontSize: "0.94rem",
                   color: "rgb(151, 151, 151)",
                 }}
@@ -70,29 +98,10 @@ export default function Login() {
               </span>
             </Link>
 
-            <br />
-            <MainButton1
-              variant="contained"
-              type="submit"
-              style={{
-                marginLeft: "190px",
-                width: "180px",
-                height: "50px",
-                marginTop: "80px",
-              }}
-            >
-              Войти
-            </MainButton1>
-            <br />
-            <span
-              style={{
-                fontSize: "0.87rem",
-                color: "rgb(151, 151, 151)",
-                marginLeft: "90px",
-              }}
-            >
-              Продолжая, вы даете согласие на обработку персональных данных.
-            </span>
+
+            </Stack>
+
+
           </form>
         </StyledBox>
       </Grid>
