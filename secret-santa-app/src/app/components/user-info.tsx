@@ -11,7 +11,7 @@ type Repo = {
 };
 
 function FetchUserData() {
-  const [data, setData] = useState<Repo|null>(null);
+  const [data, setData] = useState<Repo | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -28,35 +28,31 @@ function FetchUserData() {
           "Authorization": `Bearer ${access}`,
         }
       });
-      
+
       const data: Repo = await res.json();
       setData(data);
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setLoading(false); 
+      setLoading(false);
     }
   }
 
   return (
     <>
 
-      {loading?<>Loading...</>:<>
-      
-      Мои account 
-      <br />
-      {data === null ? <p>авторизуйтесь</p> :<>{data.login} {data.email}</>}
+      {loading ? <>Loading...</> : <>
+        <Grid item xs={12}>
+          <Typography align="center" variant="h5" gutterBottom>
+            Мои аккаунт
+          </Typography>
+        </Grid>
 
-      <Grid item xs={12}>
-            <Typography align="center" variant="h5" gutterBottom>
-            Личные данные
-            </Typography>
-          </Grid>
-      <MyAccount name={data?.login} email={data?.email}/>
+        <MyAccount name={data?.login} email={data?.email} />
 
       </>}
- 
-      </>
+
+    </>
   )
 }
 
