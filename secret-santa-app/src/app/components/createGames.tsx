@@ -28,7 +28,7 @@ useEffect(() => {
     console.log(formstate.data.id);  
     setTimeout(() => {
       router.push(`/gameCreated/${formstate.data.id}`);
-    }, 2000); 
+    }, 1500); 
   }
 }, [formstate])
   return (
