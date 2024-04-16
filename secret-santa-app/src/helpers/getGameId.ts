@@ -3,6 +3,6 @@
 //   }
   
   export function localGameId(): string | null {
-    return localStorage.getItem("id");
+    return localStorage.getItem("GameId");
   }
   

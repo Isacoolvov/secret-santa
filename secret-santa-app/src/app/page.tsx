@@ -12,7 +12,7 @@ const Home = () => {
   <h1 className='content-h1'>Тайный Санта</h1>
   <p className='content-p'>Организуй тайный обмен подарками между друзьями или коллегами</p>
   <Stack  direction="row">
-<MainButton variant="contained">Создать игру</MainButton>
+<MainButton variant="contained" href='/myGames/createGame'>Создать игру</MainButton>
             </Stack>
 </section>
 

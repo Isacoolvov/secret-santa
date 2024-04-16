@@ -8,5 +8,5 @@ interface Tokens {
 // }
 
 export default function localsaveGameId(data:string) {
-  localStorage.setItem("id", data);
+  localStorage.setItem("GameId", data);
 }

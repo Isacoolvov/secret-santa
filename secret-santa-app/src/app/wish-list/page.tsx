@@ -42,7 +42,7 @@ export default function WishLists() {
     Добавить еще пожелания
     </MainButton1>
 
-    <MainButton1 variant="contained" color="primary" type="submit">
+    <MainButton1 href="/wish-list/CardCreated" variant="contained" color="primary" type="submit">
     Далее
         </MainButton1>
     </form>
