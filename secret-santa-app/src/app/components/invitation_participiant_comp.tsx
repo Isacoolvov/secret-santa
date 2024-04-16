@@ -35,13 +35,13 @@ const StyledBox = styled(Box)({
 
 
 const InviteParticipants = () => {
-  const [participants, setParticipants] = useState([{ name: '', email: '' }]);
+  const [participants, setParticipants] = useState<any>([{ name: '', email: '' }]);
 
   const handleAddParticipant = () => {
     setParticipants([...participants, { name: '', email: '' }]);
   };
 
-  const handleInputChange = (index, event) => {
+  const handleInputChange = (index:any, event:any) => {
     const { name, value } = event.target;
     const updatedParticipants = [...participants];
     updatedParticipants[index][name] = value;
@@ -79,7 +79,7 @@ const InviteParticipants = () => {
           <Stack m={2} spacing={3}>
 
 
-            {participants.map((participant, index) => (
+            {participants.map((participant:any, index:number) => (
               <React.Fragment key={index}>
 
                 Участник №{index + 1}
@@ -112,7 +112,8 @@ const InviteParticipants = () => {
 
           </Stack>
           <input type="hidden" name="gameId" value={ID} />
-          <input type="hidden" name="access" value={access} />
+          {access?<>          <input type="hidden" name="access" value={access} />
+</>:<></>}
 
 
           <MainButton1 variant="contained" onClick={handleAddParticipant}>

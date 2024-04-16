@@ -16,7 +16,7 @@ import { useFormState } from "react-dom";
 
 const initialState = {
   successMessage: "",
-  errorMessage: "",
+  errorMessage:'',
 };
 
 const InviteAcceptComponent1 = () => {
@@ -54,7 +54,6 @@ const InviteAcceptComponent1 = () => {
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
         {state?.successMessage}
-        {state?.errorMessage}
 
         <form action={formAction}>
           <Grid item xs={12}>
@@ -65,7 +64,8 @@ const InviteAcceptComponent1 = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="invite_id" value={ID} />
-            <input type="hidden" name="access" value={access} />
+            {access?<>            <input type="hidden" name="access" value={access} />
+</>:<></>}
 
             <MainButton1
               variant="contained"

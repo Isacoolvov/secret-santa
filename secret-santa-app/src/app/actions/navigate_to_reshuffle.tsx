@@ -1,6 +1,6 @@
 export async function navigate_to_reshuffle(prevState: any, participantsData: FormData) {
     let successMessage = '';
-    let errorMessage = '';
+    let errorMessage;
   
     try {
       const response = await fetch(`http://51.107.14.25:8080/games/${participantsData.get('game_id')}/reshuffle`, {
@@ -39,7 +39,7 @@ export async function navigate_to_reshuffle(prevState: any, participantsData: Fo
          successMessage ='' + responseData;
       }
     } catch (error) {
-      errorMessage = error.message;
+      errorMessage = error;
       errorMessage = ('Ошибка:' +  errorMessage);
     }
   

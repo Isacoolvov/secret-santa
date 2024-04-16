@@ -11,6 +11,10 @@ import { getAccessToken } from "@/helpers/getTokens";
 
 
 
+type DataFetchType = {
+  link: string;
+}|null
+
 
 const InviteLinkComponent = () => {
 
@@ -20,7 +24,7 @@ const InviteLinkComponent = () => {
   const [url, setUrl] = useState('');
   const [copied, setCopied] = useState(false);
 
-  const [dataFetch, setDataFetch] = useState(null);
+  const [dataFetch, setDataFetch] = useState<DataFetchType>(null);
   const [isLoading, setLoading] = useState(true);
   const access = getAccessToken();
 
@@ -40,7 +44,7 @@ const InviteLinkComponent = () => {
         setDataFetch(data);
         setLoading(false);
       })
-  }, []);
+  }, [fetchUrl ,access]);
 
   if (isLoading)  <p>Loading...</p>
   if (!dataFetch)  <p>No  data</p>
@@ -65,16 +69,12 @@ const InviteLinkComponent = () => {
   });
 
 
-  type DataFetchType = {
-    link: string;
-  }
-
   useMemo(() => {
     if (dataFetch && dataFetch.link) {
       let modifiedUrl = dataFetch.link.replace(/\/invitations\/accept\//, "/invitations_accept/");
       setUrl(modifiedUrl);
     }
-  }, [params.game_id, dataFetch?.link]);
+  }, [dataFetch]);
 
 
   return (

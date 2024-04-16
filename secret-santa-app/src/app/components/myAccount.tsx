@@ -7,9 +7,13 @@ import '../../css/myAccount.css'
 import { Box, Grid, TextField, Button, Typography } from '@mui/material';
 import { MainButton1, StyledBox } from "@/helpers/styles";
 import Stack from '@mui/material/Stack';
+type Props ={
+  
+  name?:string,
+  email?:string
+}
 
-
-export default function MyAccount() {
+export default function MyAccount({name ,email}:Props) {
   const [formstate, dispatch] = useFormState(changeLogin, null);
   console.log(formstate);
 
@@ -31,14 +35,14 @@ export default function MyAccount() {
             <Stack m={2} spacing={3}>
 
               <TextField
-                label="Ваше Имя"
+                label={name}
                 variant="outlined"
                 fullWidth
                 name="newLogin"
               />
 
               <TextField
-                label="Ваш Email"
+                label={email}
                 variant="outlined"
                 fullWidth
                 name="newEmail"

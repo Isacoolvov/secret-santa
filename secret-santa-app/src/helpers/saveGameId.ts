@@ -7,6 +7,6 @@ interface Tokens {
 //   sessionStorage.setItem("id", data.gameId);
 // }
 
-export default function localsaveGameId(data: Tokens) {
-  localStorage.setItem("id", data.gameId);
+export default function localsaveGameId(data:string) {
+  localStorage.setItem("id", data);
 }

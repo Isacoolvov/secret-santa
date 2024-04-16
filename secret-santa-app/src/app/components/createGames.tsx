@@ -9,7 +9,7 @@ import { Box, Grid, Typography, styled } from "@mui/material";
 import { MainButton, SwitchMain } from "@/helpers/uiHelpers";
 import { MainButton1, StyledBox } from "@/helpers/styles";
 
-export default function createGames() {
+export default function CreateGames() {
   const [formstate, createdispatch] = useFormState(createGame, {
     error: null,
     data: null,
@@ -48,8 +48,8 @@ export default function createGames() {
         <span>Максимальная стоимость подарка</span>
          <SwitchMain 
         defaultChecked={priceLimitChecked} 
-        onChange={(e) => setPriceLimitChecked(e.target.checked)} 
-      />
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => setPriceLimitChecked(!priceLimitChecked)} />
+      
               </label>  
               <p style={{fontSize:'0.63rem' , marginLeft:'40px' , }}>При включенной опции участникам будет показано ограничение, которому они должны будут следовать</p>
               <br />

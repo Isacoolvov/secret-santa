@@ -8,7 +8,7 @@ import { Box, Grid, TextField, Button, Typography } from '@mui/material';
 import { MainButton1, StyledBox } from "@/helpers/styles";
 import Stack from '@mui/material/Stack';
 
-export default function changePassword() {
+export default function ChangePassword() {
   const [formstate, dispatch] = useFormState(changeP, null);
   console.log(formstate);
 

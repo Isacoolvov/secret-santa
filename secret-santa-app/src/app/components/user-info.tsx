@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { getAccessToken } from "@/helpers/getTokens";
+import MyAccount from './myAccount';
+import { Grid, Typography } from '@mui/material';
 
 
 type Repo = {
@@ -26,6 +28,7 @@ function FetchUserData() {
           "Authorization": `Bearer ${access}`,
         }
       });
+      
       const data: Repo = await res.json();
       setData(data);
       setLoading(false); 
@@ -42,9 +45,17 @@ function FetchUserData() {
       
       Мои account 
       <br />
-      {data === null ? <p>авторизуйтесь</p> :<>{data.login} {data.email}</>}</>}
- 
+      {data === null ? <p>авторизуйтесь</p> :<>{data.login} {data.email}</>}
 
+      <Grid item xs={12}>
+            <Typography align="center" variant="h5" gutterBottom>
+            Личные данные
+            </Typography>
+          </Grid>
+      <MyAccount name={data?.login} email={data?.email}/>
+
+      </>}
+ 
       </>
   )
 }

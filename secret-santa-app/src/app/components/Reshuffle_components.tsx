@@ -66,7 +66,8 @@ const Reshuffle_components = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="game_id" value={ID} />
-            <input type="hidden" name="access" value={access} />
+            {access?<><input type="hidden" name="access" value={access} />
+</>:<></>}
 
 Название игры
 

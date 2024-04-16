@@ -41,8 +41,8 @@ function FetchDataComponent() {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <StyledBox>
-        <Grid >
+      <StyledBox style={{ width: "550px", height: "600px" }}>
+        <Grid style={{marginLeft:'50px'}}>
           {loading ? (
             <BarLoader color='orange' loading={loading} aria-label="Loading Spinner" data-testid="loader" />
           ) : (
@@ -67,7 +67,7 @@ function FetchDataComponent() {
                         </Typography>
 
                         <Typography align="center" >
-                          <Image src="/img/santa_rider.png" alt="santa_thum" width={100} height={100} priority={true} />
+                          <Image src="/img/santa_thumb.png" alt="santa_thum" width={100} height={100} priority={true} />
                         </Typography>
 
                         <Typography>Вы участник</Typography>

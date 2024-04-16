@@ -18,13 +18,9 @@ export default function Page() {
       
       <UserInfo/>
 
-        <Grid item xs={12}>
-            <Typography align="center" variant="h5" gutterBottom>
-            Личные данные
-            </Typography>
-          </Grid>
+      
 
-        <MyAccount />
+        {/* <MyAccount /> */}
         <ChangePassword />
         </StyledBox>
       </Grid>

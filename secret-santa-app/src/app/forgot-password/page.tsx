@@ -2,7 +2,7 @@
 import forgotPassw from "../actions/forgot-pass";
 import { useState } from "react";
 
-export default function forgotPass() {
+export default function ForgotPass() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   async function sendToMail() {

@@ -2,20 +2,16 @@
 import { useEffect, useState } from "react";
 import { Typography, Grid } from "@mui/material";
 import { getAccessToken } from "@/helpers/getTokens";
-import { StyledBox } from "@/helpers/styles";
+import { MainButton1, StyledBox } from "@/helpers/styles";
 import {  useParams, useRouter } from "next/navigation";
 import  {navigateToWishList}  from "../navigation/navigate_to_wishList";
-
+import '@/css/myAccount.css'
 export default function UserInfo() {
-  const params = useParams();
   const router =useRouter()
-  const game_id = params.game_id || 'dd';
-  console.log('useParams' , game_id);
-  
-  const [dataFetch, setDataFetch] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const access = getAccessToken();
-  const fetchUrl = `http://51.107.14.25:8080/gameuser/${game_id}/contact-info`;
+  const game = localStorage.getItem('id')
+  const fetchUrl = `http://51.107.14.25:8080/gameuser/${localStorage.getItem('id')}/contact-info`;
 
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -36,7 +32,7 @@ export default function UserInfo() {
       if (response.ok) {
         // Handle success
         console.log(response);
-        router.push(`/wishes/${game_id}`)
+        router.push(`/wish-list/`)
       } else {
         Promise.reject(new Error('Failed to save data'));
       }
@@ -55,7 +51,7 @@ export default function UserInfo() {
             gutterBottom
             style={{ marginTop: "50px", marginBottom: "40px" }}
           >
-            <b>Contacts</b>
+            <b>Контактные данные </b>
           </Typography>
           <form className="form"  onSubmit={handleSubmit}>
             <label>
@@ -63,18 +59,24 @@ export default function UserInfo() {
               <input
                 type="email"
                 name="email"
-                placeholder="example@gmail.com"
+               
               />
             </label>
             <label>
-              Ваш userName
-              <input type="text" name="userName" placeholder="userName" />
+            Ваше Имя
+              <input type="text" name="userName"  />
             </label>
             <label>
-              Ваш userPhoneNumber
-              <input type="text" name="userPhoneNumber" placeholder="userPhoneNumber" />
+            Номер телефона
+              <input type="text" name="userPhoneNumber"  />
             </label>
-            <button type="submit">Save</button>
+            <MainButton1 
+            variant="contained"
+           type="submit"
+            style={{marginTop:'75px',marginLeft: '190px' ,width:'180px' ,height:'50px' }}
+          >
+        Далее
+          </MainButton1>
           </form>
         </StyledBox>
       </Grid>

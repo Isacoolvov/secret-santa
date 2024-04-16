@@ -3,7 +3,7 @@ export async function navigateToAcceptSend(
   participantsData: FormData
 ) {
   let successMessage = "";
-  let errorMessage = "";
+  let errorMessage;
 
   try {
     const response = await fetch(
@@ -40,7 +40,7 @@ export async function navigateToAcceptSend(
     }
 
   } catch (error) {
-    errorMessage = error.message;
+    errorMessage = error;
   }
 
   return { successMessage, errorMessage };
