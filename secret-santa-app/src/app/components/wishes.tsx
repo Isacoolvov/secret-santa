@@ -9,12 +9,11 @@ export type WhishesProps = {
 }
 
 export default function Wishes({ name }: WhishesProps) {
-  const [counter, setCounter] = useState(1);
-  // console.log(want);
 
   return (
+
     <label >
-      Подарок
+      Пожелание №{Number(name) +1}
     <input
       type="text"
       name={name}
