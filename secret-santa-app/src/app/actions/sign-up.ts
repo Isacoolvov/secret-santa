@@ -1,3 +1,4 @@
+'use server'
 import { BASE_URL } from "@/helpers/helpers_base_url";
 import validateEmail from "@/helpers/validateEmail";
 import validatePassword from "@/helpers/validatePassword";
@@ -9,6 +10,8 @@ export default async function signup(
     const email = formData.get("email");
     const password = formData.get("password");
     const name = formData.get("name");
+console.log(BASE_URL);
+console.log("BASE_URL");
 
     if (
       typeof email != "string" ||

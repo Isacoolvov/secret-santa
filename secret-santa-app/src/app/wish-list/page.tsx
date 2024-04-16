@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useState, useEffect, use, FormEvent } from "react";
 import Wishes from "../components/wishes";
 import sendWishes from "../actions/wish-send";
-import { Grid } from "@mui/material";
 import { MainButton1, StyledBox } from "@/helpers/styles";
-import '@/css/myAccount.css'
+import { Grid, Stack, Typography } from "@mui/material";
+
 export default function WishLists() {
 
   const [number, setNumber] = useState(1) 
@@ -27,28 +27,26 @@ export default function WishLists() {
     sendWishes(arr);
   };
   return (
-    <>
     <Grid container justifyContent="center" alignItems="center">
-        <StyledBox style={{ width: "550px", height: "600px" }}>
-        <form onSubmit={submitWishes}>
-        <h2>Пожелания к подарку</h2>
+<StyledBox >
+<Grid item xs={12}>
+            <Typography align="center" variant="h5" gutterBottom>
+            Пожелания к подарку
+            </Typography>
+          </Grid>  <p>Добавить пожелание ,  который хотели бы  </p>
+    <form onSubmit={submitWishes}>
+    <Stack m={2} spacing={3}>
+      {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}   
+      </Stack>   
+    <MainButton1 variant="contained" type='button' onClick={handleButtonClick}>
+    Добавить еще пожелания
+    </MainButton1>
 
-            <label>
-            {new Array(number).fill(null).map((wish, i) => <Wishes name={i.toString()} key={i}/>)}
-            </label>
-            <button onClick={handleButtonClick} type='button'>Добавить</button>
-            <MainButton1 
-            href="/wish-list/CardCreated"
-            variant="contained"
-           type="submit"
-            style={{marginTop:'75px',marginLeft: '190px' ,width:'180px' ,height:'50px' }}
-          >
-        Далее
-          </MainButton1>
-          </form>
-        </StyledBox>
-      </Grid>
-
-    </>
+    <MainButton1 variant="contained" color="primary" type="submit">
+    Далее
+        </MainButton1>
+    </form>
+    </StyledBox>
+    </Grid>
   );
 }

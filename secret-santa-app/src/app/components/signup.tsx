@@ -12,7 +12,7 @@ export default function SingUp() {
     error: null,
     data: null,
   });
-  console.log(formstate);
+  console.log(formstate , 'l');
   if (formstate?.data != null) {
     saveTokens(formstate.data);
     if (localStorage.getItem("invite_id")) {
@@ -36,7 +36,7 @@ export default function SingUp() {
           </Typography>
           <form className="form" action={dispatch}>
             <label>
-              Ваше Login
+              Ваш Login
               <input type="text" name="name" placeholder="Имя Фамилия" />
             </label>
             <br />
