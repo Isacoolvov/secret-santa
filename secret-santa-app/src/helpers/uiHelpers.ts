@@ -84,9 +84,9 @@ export const BootstrapButton = styled(Button)({
 export const MainButton = styled(Button)<ButtonProps>(({ }) => ({
     boxShadow: 'none',
     color: '#FFF',
-    borderRadius: '1rem',
+    borderRadius: '12px',
     backgroundColor: '#FF6300',
-    padding: '0 36px 0 36px',
+    padding: '2px 32px 2px 32px',
     textTransform: 'none',
     '&:hover': {
         backgroundColor: '#FF6300',
