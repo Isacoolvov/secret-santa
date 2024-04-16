@@ -18,7 +18,7 @@ export default async function sendWishes(values: Array<string>) {
     }
   );
   console.log(`Bearer ${getAccessToken()}`);
-  console.log(`${BASE_URL}/wishlist/${localStorage.getItem(
+  console.log(`http://51.107.14.25:8080/wishlist/${localStorage.getItem(
     "id"
   )}/create-wishlist`)
   

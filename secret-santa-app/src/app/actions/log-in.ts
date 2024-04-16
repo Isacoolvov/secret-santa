@@ -1,7 +1,6 @@
 'use server'
 import validateEmail from "@/helpers/validateEmail";
 import validatePassword from "@/helpers/validatePassword";
-import { BASE_URL } from "@/helpers/helpers_base_url";
 
 export default async function signup(
   currentState: unknown,
@@ -10,9 +9,6 @@ export default async function signup(
   try {
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log(BASE_URL);
-    console.log("BASE_URL");
-
     
     if (
       typeof email != "string" ||
@@ -22,7 +18,7 @@ export default async function signup(
     ) {
       return { error: "Invalid email or password", data: null };
     }
-    const res = await fetch(`${BASE_URL}/auth/login`, {
+    const res = await fetch(`http://51.107.14.25:8080/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,5 +1,4 @@
 import { getAccessToken } from "@/helpers/getTokens";
-import { BASE_URL } from "@/helpers/helpers_base_url";
 
 export default async function resetPass(
   pass: string,
@@ -7,7 +6,7 @@ export default async function resetPass(
   token: string
 ) {
   const res = await fetch(
-    `${BASE_URL}/auth/reset-password/${token}`,
+    `http://51.107.14.25:8080/auth/reset-password/${token}`,
     {
       method: "POST",
       headers: {

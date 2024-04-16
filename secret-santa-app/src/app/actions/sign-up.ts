@@ -1,5 +1,4 @@
 'use server'
-import { BASE_URL } from "@/helpers/helpers_base_url";
 import validateEmail from "@/helpers/validateEmail";
 import validatePassword from "@/helpers/validatePassword";
 export default async function signup(
@@ -10,8 +9,6 @@ export default async function signup(
     const email = formData.get("email");
     const password = formData.get("password");
     const name = formData.get("name");
-console.log(BASE_URL);
-console.log("BASE_URL");
 
     if (
       typeof email != "string" ||
@@ -22,7 +19,7 @@ console.log("BASE_URL");
     ) {
       return { error: "Invalid email or password", data: null };
     }
-    const res = await fetch(`${BASE_URL}/auth/register`, {
+    const res = await fetch(`http://51.107.14.25:8080/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

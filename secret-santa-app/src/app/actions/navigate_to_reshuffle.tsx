@@ -1,11 +1,10 @@
-import { BASE_URL } from "@/helpers/helpers_base_url";
 
 export async function navigate_to_reshuffle(prevState: any, participantsData: FormData) {
     let successMessage = '';
     let errorMessage;
   
     try {
-      const response = await fetch(`${BASE_URL}/games/${participantsData.get('game_id')}/reshuffle`, {
+      const response = await fetch(`http://51.107.14.25:8080/games/${participantsData.get('game_id')}/reshuffle`, {
         method: 'POST',
         headers: {
           'accept': '*/*',

@@ -1,5 +1,4 @@
 import { getAccessToken } from "@/helpers/getTokens";
-import { BASE_URL } from "@/helpers/helpers_base_url";
 
 export default async function changeLogin(
   currentState: unknown,
@@ -17,7 +16,7 @@ console.log(access);
   const newEmail = formData.get("newEmail");
 
   const res = await fetch(
-    `${BASE_URL}/settings/update-login-email`,
+    `http://51.107.14.25:8080/settings/update-login-email`,
     {
       method: "POST",
       headers: {

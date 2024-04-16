@@ -5,7 +5,7 @@ export async function navigateToInviteSend1(prevState: any, participantsData: Fo
   let errorMessage;
 
   try {
-    const response = await fetch(`${BASE_URL}/invitations/${participantsData.get('gameId')}/send`, {
+    const response = await fetch(`http://51.107.14.25:8080/invitations/${participantsData.get('gameId')}/send`, {
       method: 'POST',
       headers: {
         'accept': '*/*',

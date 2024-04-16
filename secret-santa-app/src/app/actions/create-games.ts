@@ -1,6 +1,4 @@
 import { getAccessToken } from "@/helpers/getTokens";
-import { BASE_URL } from "@/helpers/helpers_base_url";
-import { redirect } from "next/navigation";
 
 export default async function createGame(
   currentState: unknown,
@@ -20,7 +18,7 @@ console.log('accessToken', access);
 
   
   const res = await fetch(
-    `${BASE_URL}/games/create-game`,
+    `http://51.107.14.25:8080/games/create-game`,
     {
       method: "POST",
       headers: {
