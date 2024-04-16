@@ -2,7 +2,7 @@ import { getAccessToken } from "@/helpers/getTokens";
 import { BASE_URL } from "@/helpers/helpers_base_url";
 import { redirect } from "next/navigation";
 
-export default async function createGamee(
+export default async function createGame(
   currentState: unknown,
   formData: FormData
 ) {
@@ -12,7 +12,7 @@ try {
     console.error("Access token is missing");
     return { data: null, error: "Access token is missing" };
   }
-console.log(access);
+console.log('accessToken', access);
 
   const name = formData.get("name");
   const priceLimitChecked = formData.get("priceLimitChecked") === "on" ? true : false
