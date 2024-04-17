@@ -66,8 +66,11 @@ const Reshuffle_components = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="game_id" value={ID} />
+            {access?
+            <>
             <input type="hidden" name="access" value={access} />
-
+            </>
+            :<></>}
 Название игры
 
 <div className="symbol">?</div>
@@ -77,8 +80,12 @@ const Reshuffle_components = () => {
               style={{ marginLeft: "10px" }}
               type="submit"
             >
-              Узнать подопечного
+              Жеребьевка
             </MainButton1>
+
+
+Узнать подопечного
+            
           </Stack>
         </form>
       </StyledBox>
