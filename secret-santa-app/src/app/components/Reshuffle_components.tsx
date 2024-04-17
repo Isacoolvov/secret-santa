@@ -55,10 +55,10 @@ const Reshuffle_components = () => {
         {state?.errorMessage}
 
         <form action={formAction}>
-
           <Grid item xs={12}>
             <Typography align="center" variant="h5" gutterBottom>
-            Жеребьевка. Название игры
+Название игры
+
             </Typography>
 
             <a href="#">Связаться с Организатором</a>
@@ -66,13 +66,11 @@ const Reshuffle_components = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="game_id" value={ID} />
-            {access?<><input type="hidden" name="access" value={access} />
-</>:<></>}
+            <input type="hidden" name="access" value={access} />
 
 Название игры
 
 <div className="symbol">?</div>
-            
 
             <MainButton1
               variant="contained"
