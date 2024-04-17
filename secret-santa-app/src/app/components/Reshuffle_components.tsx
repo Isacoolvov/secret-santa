@@ -85,6 +85,7 @@ const Reshuffle_components = () => {
     >{!trigger ? '' : 'Монитор, Наушники'}</Typography>
 
             <MainButton1
+              disabled={trigger}
               variant="contained"
               style={{ width: '20.25rem', height: '3.125rem' }}
               type="submit"
