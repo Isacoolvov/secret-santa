@@ -77,8 +77,12 @@ const Reshuffle_components = () => {
               style={{ marginLeft: "10px" }}
               type="submit"
             >
-              Узнать подопечного
+              Жеребьевка
             </MainButton1>
+
+
+Узнать подопечного
+            
           </Stack>
         </form>
       </StyledBox>
