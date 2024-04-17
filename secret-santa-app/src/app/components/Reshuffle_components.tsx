@@ -52,7 +52,7 @@ const Reshuffle_components = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
-      <Typography align="center" variant="h5" gutterBottom>
+      <Typography align="center" variant="h5" gutterBottom style={{color:'green'}}>
         {state?.successMessage}
         {state?.errorMessage}
       </Typography>
@@ -60,12 +60,12 @@ const Reshuffle_components = () => {
 
         <form action={formAction}>
           <Grid item xs={12}>
-            <Typography align="center" variant="h4" gutterBottom>
-Название игры
+            <Typography align="center" variant="h4" gutterBottom style={{color:'#ff6400' }}>
+
+                                 Название игры
 
             </Typography>
-
-            <a href="#">Связаться с Организатором</a>
+            <a href="#" style={{marginLeft:'75px' ,color:'rgb(192, 227, 229)'}}>Связаться с Организатором</a>
           </Grid>
 
           <Stack m={2} spacing={3}>
@@ -75,12 +75,12 @@ const Reshuffle_components = () => {
             <input type="hidden" name="access" value={access} />
             </>
             :<></>}
-Название игры
+                  <span style={{marginLeft:'100px'}}>Название игры</span>
 
-  <Typography className="symbol"
+  <Typography className="symbol" 
     align="center" variant="h3" gutterBottom
     >{!trigger ? '?' : 'Danial'}</Typography>
-    <Typography className="symbol"
+    <Typography className="symbol" 
     align="center" variant="h5" gutterBottom
     >{!trigger ? '' : 'Монитор, Наушники'}</Typography>
 
