@@ -51,12 +51,15 @@ const Reshuffle_components = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <StyledBox>
+      <Typography align="center" variant="h5" gutterBottom>
         {state?.successMessage}
         {state?.errorMessage}
+      </Typography>
+        
 
         <form action={formAction}>
           <Grid item xs={12}>
-            <Typography align="center" variant="h5" gutterBottom>
+            <Typography align="center" variant="h4" gutterBottom>
 Название игры
 
             </Typography>
@@ -68,14 +71,16 @@ const Reshuffle_components = () => {
             <input type="hidden" name="game_id" value={ID} />
             <input type="hidden" name="access" value={access} />
 
-Название игры
 
-<div className="symbol">?</div>
+<Typography className="symbol"
+    align="center" variant="h2" gutterBottom
+    >?</Typography>
 
             <MainButton1
               variant="contained"
-              style={{ marginLeft: "10px" }}
+              style={{ width: '20.25rem', height: '3.125rem' }}
               type="submit"
+              
             >
               Узнать подопечного
             </MainButton1>
