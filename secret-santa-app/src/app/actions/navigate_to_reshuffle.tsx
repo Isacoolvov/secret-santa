@@ -1,6 +1,6 @@
 export async function navigate_to_reshuffle(prevState: any, participantsData: FormData) {
   let successMessage = '';
-  let errorMessage = '';
+  let errorMessage;
 
 
   console.log('participantsData');
@@ -28,8 +28,6 @@ export async function navigate_to_reshuffle(prevState: any, participantsData: Fo
     }
 
 
-    console.log('response');
-
     
 
      if (response.headers.get('Content-Type') === 'application/json') {
@@ -45,7 +43,7 @@ export async function navigate_to_reshuffle(prevState: any, participantsData: Fo
        successMessage ='' + responseData;
     }
   } catch (error) {
-    errorMessage = error.message;
+    errorMessage = error;
     errorMessage = ('Ошибка:' +  errorMessage);
   }
 

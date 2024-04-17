@@ -21,6 +21,7 @@ const initialState = {
 
 const Reshuffle_components = () => {
   const [state, formAction] = useFormState(navigate_to_reshuffle, initialState);
+  const [trigger, setTrigger]  = useState(false)
 
   const StyledBox = styled(Box)({
     backgroundColor: "#fff",
@@ -69,12 +70,19 @@ const Reshuffle_components = () => {
 
           <Stack m={2} spacing={3}>
             <input type="hidden" name="game_id" value={ID} />
+            {access?
+            <>
             <input type="hidden" name="access" value={access} />
+            </>
+            :<></>}
+Название игры
 
-
-<Typography className="symbol"
-    align="center" variant="h2" gutterBottom
-    >?</Typography>
+  <Typography className="symbol"
+    align="center" variant="h3" gutterBottom
+    >{!trigger ? '?' : 'Danial'}</Typography>
+    <Typography className="symbol"
+    align="center" variant="h5" gutterBottom
+    >{!trigger ? '' : 'Монитор, Наушники'}</Typography>
 
             <MainButton1
               variant="contained"
@@ -82,8 +90,22 @@ const Reshuffle_components = () => {
               type="submit"
               
             >
+              Жеребьевка
+            </MainButton1>
+
+            <MainButton1
+              variant="contained"
+              style={{ width: '20.25rem', height: '3.125rem' }}
+              type="submit"
+              onClick={() => {
+                setTrigger(true)
+              }}
+              
+            >
               Узнать подопечного
             </MainButton1>
+
+            
           </Stack>
         </form>
       </StyledBox>
