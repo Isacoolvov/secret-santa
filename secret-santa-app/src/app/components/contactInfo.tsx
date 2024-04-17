@@ -13,8 +13,8 @@ export default function UserInfo() {
   const router = useRouter()
   const [isLoading, setLoading] = useState(true);
   const access = getAccessToken();
-  const game = localStorage.getItem('id')
-  const fetchUrl = `http://51.107.14.25:8080/gameuser/${localStorage.getItem('id')}/contact-info`;
+  const game = localStorage.getItem('GameId')
+  const fetchUrl = `http://51.107.14.25:8080/gameuser/${localStorage.getItem('GameId')}/contact-info`;
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
